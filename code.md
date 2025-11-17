@@ -5,7 +5,6 @@
 ---
 
 Here I list selected repositories and code related to my research.  
-(You can replace links with real repos whenever آماده شد.)
 
 - **Multilayer Financial Network Spillover Detection**  
   Algorithms and code used in my job market paper.  
