@@ -21,10 +21,8 @@ My research develops methods to detect hidden community spillovers, forecast cri
 
 [PDF (coming soon)](#) · [Slides (coming soon)](#) · [Code](https://github.com/jamshidardalankia)
 
-- **Structural Balance and Early-Warning Indicators of Financial Crises**  
-- **Network-Based Portfolio Optimization under Correlation Uncertainty**  
-- **Directed Supply Chain Networks and Systemic Spillover**
-
+- **Network-Based Portfolio Optimization under Correlation Uncertainty**
+  
 ---
 
 ## Quick Links
