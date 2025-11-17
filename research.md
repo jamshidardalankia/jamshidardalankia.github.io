@@ -14,7 +14,7 @@
 
 ---
 
-## Job Market Paper
+## Works in Progress
 
 **Generalization of Hierarchical Clustering for Hidden Community Spillover in Financial Multilayer Networks**
 
@@ -23,21 +23,17 @@
 - Identifies “hidden” communities that standard correlation clustering misses  
 - Applications to systemic risk monitoring, stress testing, and portfolio design  
 
----
-
-## Working Papers
-
-### Structural Balance and Crisis Prediction
+**Structural Balance and Crisis Prediction**
 - Signed correlation networks of financial assets and sectors  
 - Structural balance dynamics as an indicator of latent tension  
 - Energy-based measures used as early-warning signals for market stress
 
-### Network-Based Portfolio Optimization
+**Network-Based Portfolio Optimization
 - Portfolios that weight assets not only by variance–covariance but also by network similarity and uncertainty  
 - Combines multilayer correlation structures with robust optimization  
 - Evaluates performance vs. Markowitz, minimum variance, and naive 1/N strategies
 
-### Directed Supply Chain Spillovers
+**Supply Chain Spillovers**
 - Directed multilayer network of suppliers and customers  
 - Community-based spillover indices to quantify systemic exposure  
 - Relevant for macroprudential regulation, supply-chain stress, and corporate risk management
