@@ -7,12 +7,12 @@
 PhD Candidate in Economics and Quantitative Finance  
 Virginia Tech  
 
-I work on **financial networks, systemic risk, market microstructure, and network-based portfolio optimization**.  
+I work on financial networks, systemic risk, market microstructure, and network-based portfolio optimization.  
 My research develops methods to detect hidden community spillovers, forecast crises, and design portfolios that account for network dependencies between assets, banks, and firms.
 
 ---
 
-## Job Market Paper
+## Works in Progress
 
 **Generalization of Hierarchical Clustering for Hidden Community Spillover in Financial Multilayer Networks**  
 - Detects hidden risk spillovers across price and trading-value layers  
@@ -20,10 +20,6 @@ My research develops methods to detect hidden community spillovers, forecast cri
 - Provides tools for portfolio construction and systemic risk monitoring  
 
 [PDF (coming soon)](#) · [Slides (coming soon)](#) · [Code](https://github.com/jamshidardalankia)
-
----
-
-## Working Papers
 
 - **Structural Balance and Early-Warning Indicators of Financial Crises**  
 - **Network-Based Portfolio Optimization under Correlation Uncertainty**  
