@@ -1,3 +1,11 @@
 theme: jekyll-theme-minimal
+
 title: "Jamshid Ardalankia"
-description: "PhD Candidate | Financial Networks | Systemic Risk | Quantitative Finance"
+description: "PhD Candidate · Financial Networks · Systemic Risk · Quantitative Finance"
+
+logo: /assets/img/profile.jpg
+
+github_username:  jamshidardalankia
+linkedin: "https://www.linkedin.com/feed/"
+scholar: "https://scholar.google.com/citations?hl=en&user=0sMvul4AAAAJ"
+email: "ardalankia@vt.edu"
