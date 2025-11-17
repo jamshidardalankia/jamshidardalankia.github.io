@@ -21,8 +21,6 @@
 - **Scaling Features of Price-Volume Cross Correlation**  
   *EPL*.
 
-*(You can edit journal names / years دقیقا مثل رزومه‌ات.)*
-
 ---
 
 ### Working Papers
