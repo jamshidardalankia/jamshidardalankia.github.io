@@ -23,11 +23,9 @@
 
 ---
 
-### Working Papers
+### Works in Progress
 
-- Structural Balance and Early-Warning Indicators of Financial Crises  
-- Network-Based Portfolio Optimization under Correlation and Similarity Uncertainty  
-- Directed Supply Chain Networks and Systemic Spillover
+- Network-Based Portfolio Optimization under Structural Similarity
 
 ---
 
