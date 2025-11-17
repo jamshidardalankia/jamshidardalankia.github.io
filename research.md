@@ -28,7 +28,7 @@
 - Structural balance dynamics as an indicator of latent tension  
 - Energy-based measures used as early-warning signals for market stress
 
-**Network-Based Portfolio Optimization
+**Network-Based Portfolio Optimization**
 - Portfolios that weight assets not only by variance–covariance but also by network similarity and uncertainty  
 - Combines multilayer correlation structures with robust optimization  
 - Evaluates performance vs. Markowitz, minimum variance, and naive 1/N strategies
