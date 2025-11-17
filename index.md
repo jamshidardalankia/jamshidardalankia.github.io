@@ -1,9 +1,32 @@
----
-layout: single
-title: "Jamshid Ardalankia"
-subtitle: "PhD Candidate · Financial Networks · Systemic Risk · Quantitative Finance"
+# Jamshid Ardalankia
+
+PhD Candidate in Economics & Quantitative Finance  
+Virginia Tech  
+
+**Research Areas:**  
+Financial Networks · Systemic Risk · Market Microstructure · Portfolio Optimization
+
 ---
 
-Hello, I am a PhD candidate at Virginia Tech working on network-based methodologies for systemic risk, financial stability, portfolio optimization, and data-driven modeling.
+### 📄 CV  
+[Download my CV](assets/Jamshid_Ardalankia_CV.pdf)
 
-This is my job market homepage — more sections will be added soon.
+### 🔗 Links  
+- [Google Scholar](#)  
+- [LinkedIn](#)  
+- [GitHub](https://github.com/jamshidardalankia)
+
+---
+
+### 📘 Job Market Paper  
+**Generalization of Hierarchical Clustering for Hidden Community Spillover Detection in Financial Multilayer Networks**  
+[PDF](#)
+
+---
+
+### 📚 Publications  
+- PLOS ONE (2025): Generalization of Hierarchical Clustering…  
+- Physica A: Coupled Time-Series Network Mapping  
+- EPL: Scaling of Price-Volume Cross Correlation  
+- IJMPC: Structural Balance Dynamics  
+
