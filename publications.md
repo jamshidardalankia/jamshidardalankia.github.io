@@ -1,35 +1,12 @@
 # Publications
 
-[Home](./) | [Research](research) | [Publications](publications) | [CV](cv) | [Teaching](teaching) | [Code](code) | [Contact](contact)
+[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
 
----
+[Published articles and invited book chapters, with authors, years, and abstracts](/#publications-heading)
 
-### Journal Articles
+[Working papers and manuscripts](/#working-heading) · [Work in progress](/#progress-heading)
 
-- **Generalization of Hierarchical Clustering for Hidden Community Spillover Detection in Financial Multilayer Networks**  
-  *PLOS ONE*, 2025.
+## Other outputs
 
-- **Analysis of the Global Banking Network by Random Matrix Theory**  
-  *[Journal name]*.
-
-- **Mapping Coupled Financial Time-Series onto Complex Networks**  
-  *Physica A*.
-
-- **Scaling Analysis of Price by Multi-Scale Shannon Entropy**  
-  *Frontiers in Physics*.
-
-- **Scaling Features of Price-Volume Cross Correlation**  
-  *EPL*.
-
----
-
-### Works in Progress
-
-- Network-Based Portfolio Optimization under Structural Similarity
-
----
-
-### Other Outputs
-
-- Conference presentations (SEA)  
+- [Conference presentations](/#meetings-heading)
 - Tutorials and lecture notes on financial networks, multilayer systems, and portfolio optimization

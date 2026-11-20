@@ -1,6 +1,6 @@
 # Teaching
 
-[Home](./) | [Research](research) | [Publications](publications) | [CV](cv) | [Teaching](teaching) | [Code](code) | [Contact](contact)
+[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
 
 ---
 
@@ -16,7 +16,9 @@
 
 ## Teaching Experience
 
-- **Analysis of Economic Data (Undergraduate)** – Teaching Assistant, Virginia Tech  
+[Course instruction, graduate teaching assistantships, and curriculum design](/#teaching)
+
+- **Analysis of Economic Data (Undergraduate)** – Graduate Teaching Assistant, Virginia Tech
 - **Big Data in Economics / AI in Finance** – Teaching / lab support  
 - Guest lectures on:
   - Financial networks and systemic risk  

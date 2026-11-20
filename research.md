@@ -1,6 +1,6 @@
 # Research
 
-[Home](./) | [Research](research) | [Publications](publications) | [CV](cv) | [Teaching](teaching) | [Code](code) | [Contact](contact)
+[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
 
 ---
 
@@ -14,24 +14,16 @@
 
 ---
 
-## Works in Progress
+## Papers
 
-**Generalization of Hierarchical Clustering for Hidden Community Spillover in Financial Multilayer Networks**
+[Working papers and manuscripts](/#working-heading) · [Publications](/#publications-heading) · [Work in progress](/#progress-heading)
 
-- Multilayer network of assets with separate price and trading-value layers  
-- Similarity-based hierarchical clustering generalized to capture cross-layer spillovers  
-- Identifies “hidden” communities that standard correlation clustering misses  
-- Applications to systemic risk monitoring, stress testing, and portfolio design  
+## Other research topics
 
 **Structural Balance and Crisis Prediction**
 - Signed correlation networks of financial assets and sectors  
 - Structural balance dynamics as an indicator of latent tension  
 - Energy-based measures used as early-warning signals for market stress
-
-**Network-Based Portfolio Optimization**
-- Portfolios that weight assets not only by variance–covariance but also by network similarity and uncertainty  
-- Combines multilayer correlation structures with robust optimization  
-- Evaluates performance vs. Markowitz, minimum variance, and naive 1/N strategies
 
 **Supply Chain Spillovers**
 - Directed multilayer network of suppliers and customers  

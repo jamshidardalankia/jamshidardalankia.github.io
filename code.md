@@ -1,6 +1,6 @@
 # Code and Data
 
-[Home](./) | [Research](research) | [Publications](publications) | [CV](cv) | [Teaching](teaching) | [Code](code) | [Contact](contact)
+[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
 
 ---
 
