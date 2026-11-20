@@ -187,6 +187,8 @@ address { font-style: normal; margin-top: .45rem; }
 .email { display: inline-flex; align-items: center; min-height: 2.75rem; font: 400 1.5rem/1.4 var(--serif); text-decoration-thickness: 1px; }
 .footer-side { display: flex; flex-direction: column; align-items: flex-end; }
 .profile-links { display: flex; flex-wrap: wrap; gap: 0 1.1rem; }
+.profile-links a { gap: .4rem; }
+.profile-icon { width: 1rem; height: 1rem; fill: currentColor; flex: none; }
 .footer-side small { font-size: .8125rem; }
 
 @media (max-width: 43rem) {
@@ -236,6 +238,9 @@ address { font-style: normal; margin-top: .45rem; }
 .paper-abstract { margin-top: .15rem; }
 .paper-abstract summary { padding-block: .42rem; align-content: center; }
 .paper-abstract summary::marker { color: var(--muted); }
+.paper-figure { max-width: 30rem; margin: 1rem 0; }
+.paper-figure img { display: block; max-width: 100%; height: auto; }
+.paper-figure figcaption { margin-top: .6rem; color: var(--muted); font-size: .875rem; }
 .abstract-text {
   max-width: 66ch;
   margin-block: .2rem .5rem;
