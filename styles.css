@@ -270,11 +270,12 @@ address { font-style: normal; margin-top: .45rem; }
 .paper-abstract { margin-top: .15rem; }
 .paper-abstract summary { padding-block: .42rem; align-content: center; }
 .paper-abstract summary::marker { color: var(--muted); }
-.paper-figure { max-width: 36rem; margin: 1rem 0; }
-.paper-figure--wide { max-width: none; }
+.paper-figure { width: min(100%, 66ch, var(--preview-width, 36rem)); margin: 1rem 0; }
+.paper-figure--compact { --preview-width: 32rem; }
+.paper-figure--portrait { --preview-width: 26rem; }
 .figure-full { display: block; width: fit-content; max-width: 100%; cursor: zoom-in; }
 .paper-figure img { display: block; max-width: 100%; height: auto; }
-.paper-figure figcaption { margin-top: .6rem; color: var(--muted); font-size: .875rem; }
+.paper-figure figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; line-height: 1.5; }
 .abstract-text {
   text-align: justify;
   text-align-last: start;
