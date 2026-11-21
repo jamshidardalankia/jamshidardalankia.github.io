@@ -1,8 +1,6 @@
 # Research
 
-[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
-
----
+{% include section-links.html %}
 
 ## Research Interests
 
@@ -11,8 +9,6 @@
 - Market microstructure and trading-value spillovers  
 - Network-based portfolio construction and risk parity  
 - AI, big data, and network methods in finance
-
----
 
 ## Papers
 
@@ -29,8 +25,6 @@
 - Directed multilayer network of suppliers and customers  
 - Community-based spillover indices to quantify systemic exposure  
 - Relevant for macroprudential regulation, supply-chain stress, and corporate risk management
-
----
 
 ## Future Directions
 

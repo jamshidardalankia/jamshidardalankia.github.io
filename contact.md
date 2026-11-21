@@ -1,8 +1,6 @@
 # Contact
 
-[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
-
----
+{% include section-links.html %}
 
 **Email:** ardalankia@vt.edu  
 

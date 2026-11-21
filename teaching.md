@@ -1,8 +1,6 @@
 # Teaching
 
-[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
-
----
+{% include section-links.html %}
 
 ## Teaching Interests
 
@@ -11,8 +9,6 @@
 - Financial Econometrics and Big Data in Finance  
 - Network Science in Finance and Economics  
 - Macro–Financial Stability and Systemic Risk
-
----
 
 ## Teaching Experience
 
@@ -25,8 +21,6 @@
   - Financial networks and systemic risk  
   - Portfolio optimization beyond Markowitz  
   - Applications of multilayer networks in finance
-
----
 
 ## Teaching Approach
 

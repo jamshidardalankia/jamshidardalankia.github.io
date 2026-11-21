@@ -1,6 +1,6 @@
 # Publications
 
-[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
+{% include section-links.html %}
 
 [Published articles and invited book chapters, with authors, years, and abstracts](/#publications-heading)
 

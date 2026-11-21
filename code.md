@@ -1,8 +1,6 @@
 # Code and Data
 
-[Home](./) | [Research](research) | [Publications](/#publications-heading) | [Teaching](teaching) | [Code](code) | [Contact](/#contact)
-
----
+{% include section-links.html %}
 
 Here I list selected repositories and code related to my research.  
 
@@ -13,7 +11,5 @@ Here I list selected repositories and code related to my research.
 - **Network-Based Portfolio Optimization**  
   Rolling-window portfolio backtests using correlation, partial correlation, and similarity matrices.  
   [GitHub repo](https://github.com/jamshidardalankia)
-
----
 
 I aim to keep all research code **open, documented, and reproducible** so that other researchers and practitioners can build on it.
