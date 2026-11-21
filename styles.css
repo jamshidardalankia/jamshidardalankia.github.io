@@ -254,10 +254,14 @@ address { font-style: normal; margin-top: .45rem; }
 .paper-abstract summary { padding-block: .42rem; align-content: center; }
 .paper-abstract summary::marker { color: var(--muted); }
 .paper-figure { max-width: 36rem; margin: 1rem 0; }
+.paper-figure--wide { max-width: none; }
 .figure-full { display: block; width: fit-content; max-width: 100%; cursor: zoom-in; }
 .paper-figure img { display: block; max-width: 100%; height: auto; }
 .paper-figure figcaption { margin-top: .6rem; color: var(--muted); font-size: .875rem; }
 .abstract-text {
+  text-align: justify;
+  text-align-last: start;
+  hyphens: auto;
   max-width: 66ch;
   margin-block: .2rem .5rem;
   border-inline-start: 2px solid var(--rule);
