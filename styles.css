@@ -153,6 +153,13 @@ pre {
 }
 code { font: .875rem/1.6 ui-monospace, Consolas, monospace; }
 .conference { margin-top: 0; }
+.conference-framed {
+  margin-block: .35rem .65rem;
+  border: 1px solid var(--rule);
+  border-radius: .375rem;
+}
+.conference-framed > summary { width: 100%; padding-inline: .85rem; }
+.conference-framed > .details-body { padding-inline: .85rem; }
 .program-list { list-style: none; padding: 0; }
 .program-list li { padding-block: .7rem; }
 .program-list h4 { font-size: 1.2rem; }
