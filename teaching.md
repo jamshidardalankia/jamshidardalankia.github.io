@@ -19,7 +19,8 @@
 [Course instruction, graduate teaching assistantships, and curriculum design](/#teaching)
 
 - **Analysis of Economic Data (Undergraduate)** – Graduate Teaching Assistant, Virginia Tech
-- **Big Data in Economics / AI in Finance** – Teaching / lab support  
+- **Data Science for Quantitative Finance** – Graduate Teaching Assistant, Virginia Tech. Guest instructor for one class session on copulas.
+- **Big Data Economics** – Graduate Teaching Assistant, Virginia Tech. Guest instructor for one class session on matrix algebra and programming for econometric analysis.
 - Guest lectures on:
   - Financial networks and systemic risk  
   - Portfolio optimization beyond Markowitz  
