@@ -1,0 +1,4 @@
+{%- assign release = site.data.research_code | where: "paper_id", include.paper | first -%}
+{%- if release.repository and release.repository != empty -%}
+<a class="manuscript-link project-code" href="{{ release.repository | escape }}" target="_blank" rel="noopener">Code on GitHub</a>
+{%- endif -%}

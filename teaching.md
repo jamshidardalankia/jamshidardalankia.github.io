@@ -15,8 +15,8 @@
 [Course instruction, graduate teaching assistantships, and curriculum design](/#teaching)
 
 - **Analysis of Economic Data (Undergraduate)** – Graduate Teaching Assistant, Virginia Tech
-- **Data Science for Quantitative Finance** – Graduate Teaching Assistant, Virginia Tech. Guest instructor for one class session on copulas.
-- **Big Data Economics** – Graduate Teaching Assistant, Virginia Tech. Guest instructor for one class session on matrix algebra and programming for econometric analysis.
+- **Data Science for Quantitative Finance** – Graduate Teaching Assistant, Virginia Tech. Guest lecture on copulas.
+- **Big Data Economics** – Graduate Teaching Assistant, Virginia Tech. Guest lecture on matrix algebra and programming for econometric analysis.
 - Guest lectures on:
   - Financial networks and systemic risk  
   - Portfolio optimization beyond Markowitz  
@@ -24,9 +24,4 @@
 
 ## Teaching Approach
 
-I emphasize:
-
-- Intuition first, then mathematics  
-- Real data (stock markets, banking networks, supply chains)  
-- Coding in Python / R for hands-on experiments  
-- Open-source code and reproducible research for students
+I start with the economic intuition, then introduce the mathematics. In applied exercises, students use reproducible Python or R code to explore stock prices and banking networks.
