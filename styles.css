@@ -10,8 +10,11 @@
   --serif: Georgia, 'Times New Roman', serif;
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --gutter: clamp(1.25rem, 4.5vw, 2.5rem);
-  --title-size: clamp(1.1875rem, 1.1rem + .4vw, 1.375rem);
-  --group-space: clamp(2rem, 4vw, 3rem);
+  --section-size: clamp(2rem, 1.65rem + 1.5vw, 2.5rem);
+  --group-size: clamp(1.375rem, 1.25rem + .6vw, 1.625rem);
+  --subgroup-size: clamp(1.25rem, 1.16rem + .36vw, 1.375rem);
+  --title-size: clamp(1.125rem, 1.05rem + .36vw, 1.25rem);
+  --group-space: clamp(2.25rem, 5vw, 3.25rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -86,12 +89,10 @@ a:hover { text-decoration-thickness: 2px; }
   gap: .5rem 2rem;
   padding-block: 1.48rem 1.55rem;
 }
-.label {
-  font: 600 .9375rem/1.45 var(--sans);
-  text-transform: uppercase;
-  letter-spacing: .07em;
+.fact > .label, .contact .label {
+  font: 700 var(--group-size)/1.2 var(--serif);
+  letter-spacing: -.02em;
 }
-.fact > .label { padding-top: .24rem; }
 .fact h3 { font: 400 var(--title-size)/1.35 var(--serif); letter-spacing: -.012em; }
 .fact .meta { margin-top: .3rem; }
 .prior-degree, .prior-role { margin-top: 1.1rem; }
@@ -101,17 +102,22 @@ a:hover { text-decoration-thickness: 2px; }
 .fact-note { margin-top: .35rem; font-size: .95rem; }
 
 .major {
-  margin-top: var(--group-space);
+  margin-top: clamp(3.25rem, 6vw, 4.75rem);
   border-top: 1px solid var(--rule);
   padding-top: clamp(1.75rem, 4vw, 2.75rem);
 }
 .section-title {
-  font: 400 clamp(1.875rem, 1.45rem + 1.45vw, 2.5rem)/1.2 var(--serif);
+  font: 700 var(--section-size)/1.15 var(--serif);
   letter-spacing: -.025em;
   margin-bottom: clamp(1.35rem, 3vw, 2rem);
 }
 .group + .group, .teaching-group + .teaching-group { margin-top: var(--group-space); }
-.group .label, .teaching-group .label { margin-bottom: 1rem; }
+.group > .label, .teaching-group > .label, .subpage-section h2, .earlier-teaching > summary {
+  font: 700 var(--group-size)/1.25 var(--sans);
+  letter-spacing: -.018em;
+  text-wrap: pretty;
+}
+.group > .label, .teaching-group > .label { margin-bottom: .85rem; }
 .entry + .entry { margin-top: 1.4rem; }
 .entry h4, .entry h5, .course h4, .program-list h4 {
   max-width: 55ch;
@@ -126,7 +132,7 @@ a:hover { text-decoration-thickness: 2px; }
 .publication-list { list-style: none; padding: 0; margin-top: 1.1rem; }
 .publication-list li + li { margin-top: 1.3rem; }
 .publication-list .venue { margin-bottom: .3rem; }
-.publication-list h4 { font: 400 1.25rem/1.4 var(--serif); }
+.publication-list h4 { font: 400 var(--title-size)/1.4 var(--serif); }
 .publication-list .byline { margin-top: .25rem; }
 .manuscript-link {
   display: inline-flex;
@@ -163,9 +169,7 @@ code { font: .875rem/1.6 ui-monospace, Consolas, monospace; }
 .conference > summary {
   list-style-position: outside;
   width: 100%;
-  font-size: clamp(1.0625rem, 1rem + .28vw, 1.1875rem);
-  font-weight: 600;
-  line-height: 1.45;
+  font: 600 var(--subgroup-size)/1.4 var(--sans);
   padding-block: .6rem;
 }
 .conference > summary:focus-visible {
@@ -174,13 +178,19 @@ code { font: .875rem/1.6 ui-monospace, Consolas, monospace; }
   text-underline-offset: .2em;
 }
 .conference > summary:focus-visible::marker { color: var(--focus); }
-.meeting-place { display: inline-block; font-weight: 400; }
+.meeting-place { display: inline-block; font: 400 1rem/1.5 var(--sans); color: var(--muted); }
 .conference > .details-body { padding-block: .15rem 1rem; }
 .program-list { list-style: none; padding: 0; margin-block: .75rem .45rem; }
 .program-list li + li { margin-top: 1.1rem; }
 .program-list h4 + p { margin-top: .3rem; }
-.chapters { margin-top: 1.8rem; }
-.earlier-teaching { margin-top: 1.3rem; }
+.chapters { margin-top: 1.75rem; padding-inline-start: clamp(.75rem, 2vw, 1.5rem); }
+.chapters > .label {
+  margin-bottom: .65rem;
+  font: 600 var(--subgroup-size)/1.3 var(--sans);
+  letter-spacing: -.01em;
+}
+.earlier-teaching { margin-top: var(--group-space); }
+.earlier-teaching[open] > summary { margin-bottom: .55rem; }
 .earlier-teaching .course { padding-block: .35rem; }
 .program-list + a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .9375rem; }
 
@@ -189,11 +199,7 @@ code { font: .875rem/1.6 ui-monospace, Consolas, monospace; }
 .subpage { padding-top: clamp(2.5rem, 6vw, 4.5rem); }
 .subpage-section { max-width: 66ch; }
 .subpage-section + .subpage-section, .repository-directory + .subpage-section { margin-top: var(--group-space); }
-.subpage-section h2 {
-  margin-bottom: .55rem;
-  font: 400 clamp(1.375rem, 1.18rem + .7vw, 1.625rem)/1.3 var(--serif);
-  letter-spacing: -.012em;
-}
+.subpage-section h2 { margin-bottom: .65rem; }
 .resource-list { list-style: none; padding: 0; }
 .resource-list li + li { margin-top: 1.05rem; }
 .resource-title { font-weight: 600; }
@@ -226,8 +232,7 @@ address { font-style: normal; margin-top: .45rem; }
 
 @media (max-width: 43rem) {
   .masthead { padding-block: 1.45rem .9rem; }
-  .fact { grid-template-columns: 1fr; padding-block: 1.25rem; gap: .45rem; }
-  .fact > .label { padding-top: 0; }
+  .fact { grid-template-columns: 1fr; padding-block: 1.35rem; gap: .85rem; }
 }
 @media (max-width: 32rem) {
   .masthead { align-items: flex-start; flex-direction: column; gap: .35rem; }
@@ -240,13 +245,21 @@ address { font-style: normal; margin-top: .45rem; }
   .footer-side { align-items: flex-start; }
 }
 @media print {
+  :root {
+    --section-size: 25pt;
+    --group-size: 17pt;
+    --subgroup-size: 15pt;
+    --title-size: 13.5pt;
+    --group-space: 1.5rem;
+  }
   .wide, .column { width: 100%; max-width: none; }
   .primary, .skip-link { display: none; }
   .masthead, .intro, .major, .contact-inner { padding-block: 1rem; }
   .intro h1 { font-size: 2rem; }
   .contact { margin-top: 1.5rem; }
-  h2, h3, h4 { break-after: avoid; }
-  .fact, .course { break-inside: avoid; }
+  .major { margin-top: 2rem; }
+  h2, h3, h4, h5, .paper-heading { break-after: avoid; }
+  .fact, .course, .paper-heading, .paper:not(:has(details[open])) { break-inside: avoid; }
 }
 
 /* Research entries */
@@ -260,7 +273,8 @@ address { font-style: normal; margin-top: .45rem; }
   max-width: 100%;
   text-wrap: balance;
 }
-.paper-heading a { text-decoration-thickness: 1px; }
+.paper-heading a, .program-list h4 a { text-decoration-color: #8395a4; }
+.paper-heading a:hover, .program-list h4 a:hover { text-decoration-color: currentColor; }
 .paper-year {
   color: var(--muted);
   font: .9375rem/1.5 var(--sans);
