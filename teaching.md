@@ -21,7 +21,7 @@
 ### Graduate Teaching Assistantships
 
 - **Data Science for Quantitative Finance** (2026) – Graduate Teaching Assistant · Virginia Tech · Undergraduate level. Guest lecture on copulas.
-- **Big Data Economics** (2021–2026) – Graduate Teaching Assistant · Virginia Tech · Undergraduate and PhD levels. Guest lecture on matrix algebra, programming for econometric analysis, and recommendation systems. [Spring 2024 syllabus](https://www.alihabibnia.com/wp-content/uploads/2024/01/ECON_5314G_Big_Data_Economics_Spring_2024.pdf)
+- **Big Data Economics** (2021–2026) – Graduate Teaching Assistant · Virginia Tech · Undergraduate and PhD levels. Guest lecture on matrix algebra, programming for econometric analysis, and recommendation systems. [Spring 2024 syllabus](https://www.alihabibnia.com/wp-content/uploads/2024/01/ECON_5314G_Big_Data_Economics_Spring_2024.pdf){:target="_blank" rel="noopener"}
 - **Econometric Methods** (Fall 2026) – Graduate Teaching Assistant · Virginia Tech · Undergraduate level
 - **Empirical Economics** (Fall 2026) – Graduate Teaching Assistant · Virginia Tech · Master’s level
 - **Analysis of Economic Data** (Spring 2022) – Graduate Teaching Assistant · Virginia Tech · Undergraduate level

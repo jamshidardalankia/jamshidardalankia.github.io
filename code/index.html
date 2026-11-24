@@ -14,18 +14,18 @@ layout: academic-page
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-  <a class="skip-link" href="#main" target="_self">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="wide masthead">
     <div class="identity">
-      <a class="name" href="../" target="_blank" rel="noopener">Jamshid Ardalankia</a>
+      <a class="name" href="../">Jamshid Ardalankia</a>
       <p class="role">PhD candidate in Economics <span aria-hidden="true">·</span> Virginia Tech</p>
     </div>
     <nav class="primary" aria-label="Primary navigation">
-      <a href="../#research" target="_blank" rel="noopener">Research</a>
-      <a href="../#teaching" target="_blank" rel="noopener">Teaching</a>
-      <a href="../research-applications/" target="_blank" rel="noopener">Research Applications</a>
+      <a href="../#research">Research</a>
+      <a href="../#teaching">Teaching</a>
+      <a href="../research-applications/">Research Applications</a>
       <span aria-current="page">Code</span>
-      <a href="../#contact" target="_blank" rel="noopener">Contact</a>
+      <a href="../#contact">Contact</a>
     </nav>
   </header>
   <main id="main" class="column subpage" tabindex="-1">
@@ -38,7 +38,7 @@ layout: academic-page
       <h2 id="code-projects">Project repositories</h2>
       <ul class="resource-list">
       {% for release in releases %}
-        <li><a class="resource-title" href="{{ release.repository | escape }}" target="_blank" rel="noopener">{{ release.label | escape }}</a>{% if release.paper_id and release.paper_id != empty %} <a class="related-paper" href="../#{{ release.paper_id | escape }}" target="_blank" rel="noopener">Related paper</a>{% endif %}</li>
+        <li><a class="resource-title" href="{{ release.repository | escape }}" target="_blank" rel="noopener">{{ release.label | escape }}</a>{% if release.paper_id and release.paper_id != empty %} <a class="related-paper" href="../#{{ release.paper_id | escape }}">Related paper</a>{% endif %}</li>
       {% endfor %}
       </ul>
     </section>
@@ -50,12 +50,12 @@ layout: academic-page
         <li>
           <a class="resource-title" href="https://data.bis.org/topics/LBS" target="_blank" rel="noopener">BIS locational banking statistics</a>
           <p>Quarterly cross-border banking data used to study the international lending network.</p>
-          <a class="related-paper" href="../#namaki2021banking" target="_blank" rel="noopener">Global banking network study</a>
+          <a class="related-paper" href="../#namaki2021banking">Global banking network study</a>
         </li>
         <li>
           <a class="resource-title" href="https://finance.yahoo.com/" target="_blank" rel="noopener">Yahoo Finance</a>
           <p>Stock prices and trading volumes used to study communities in multilayer financial networks.</p>
-          <a class="related-paper" href="../#ardalankia2025hidden" target="_blank" rel="noopener">Multilayer community study</a>
+          <a class="related-paper" href="../#ardalankia2025hidden">Multilayer community study</a>
         </li>
       </ul>
     </section>
