@@ -10,10 +10,10 @@
   --serif: Georgia, 'Times New Roman', serif;
   --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
   --gutter: clamp(1.25rem, 4.5vw, 2.5rem);
-  --section-size: clamp(2rem, 1.65rem + 1.5vw, 2.5rem);
-  --group-size: clamp(1.375rem, 1.25rem + .6vw, 1.625rem);
-  --subgroup-size: clamp(1.25rem, 1.16rem + .36vw, 1.375rem);
-  --title-size: clamp(1.125rem, 1.05rem + .36vw, 1.25rem);
+  --section-size: clamp(1.75rem, 1.6rem + .85vw, 2.125rem);
+  --group-size: clamp(1.25rem, 1.17rem + .45vw, 1.4375rem);
+  --subgroup-size: clamp(1.1875rem, 1.15rem + .18vw, 1.25rem);
+  --title-size: clamp(1.125rem, 1.08rem + .2vw, 1.1875rem);
   --group-space: clamp(2.25rem, 5vw, 3.25rem);
 }
 
@@ -76,7 +76,7 @@ a:hover { text-decoration-thickness: 2px; }
 .intro { padding-block: clamp(3.3rem, 6.4vw, 5.8rem) clamp(2.8rem, 4.8vw, 4.3rem); }
 .intro h1 {
   max-width: 25ch;
-  font: 400 clamp(2.25rem, 1.65rem + 2.25vw, 3.125rem)/1.15 var(--serif);
+  font: 400 clamp(2rem, 1.7rem + 1.8vw, 2.75rem)/1.15 var(--serif);
   letter-spacing: -.035em;
   text-wrap: balance;
 }
@@ -246,10 +246,10 @@ address { font-style: normal; margin-top: .45rem; }
 }
 @media print {
   :root {
-    --section-size: 25pt;
-    --group-size: 17pt;
-    --subgroup-size: 15pt;
-    --title-size: 13.5pt;
+    --section-size: 22pt;
+    --group-size: 15.5pt;
+    --subgroup-size: 14pt;
+    --title-size: 13pt;
     --group-space: 1.5rem;
   }
   .wide, .column { width: 100%; max-width: none; }
