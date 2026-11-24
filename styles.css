@@ -94,7 +94,7 @@ a:hover { text-decoration-thickness: 2px; }
 .fact > .label { padding-top: .24rem; }
 .fact h3 { font: 400 var(--title-size)/1.35 var(--serif); letter-spacing: -.012em; }
 .fact .meta { margin-top: .3rem; }
-.prior-degree { margin-top: 1.1rem; }
+.prior-degree, .prior-role { margin-top: 1.1rem; }
 .fact-more { margin-top: .45rem; }
 .fact-more .details-body > h3:not(:first-child) { margin-top: 1rem; }
 .fact-more .details-body > p { margin-bottom: 0; }
