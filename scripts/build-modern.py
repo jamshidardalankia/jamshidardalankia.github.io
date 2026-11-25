@@ -7,6 +7,7 @@ and styles are never changed. Jekyll markup is retained when present.
 """
 
 import argparse
+import hashlib
 import re
 from html import escape
 from pathlib import Path
@@ -33,6 +34,7 @@ def lower_levels(block):
 
 
 def build(root):
+    style_version = hashlib.sha256((root / "modern/styles.css").read_bytes()).hexdigest()[:12]
     home = (root / "index.html").read_text()
     apps = (root / "research-applications/index.html").read_text()
     code = (root / "code/index.html").read_text()
@@ -83,7 +85,7 @@ def build(root):
   <meta http-equiv="Content-Security-Policy" content="script-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>{title} | Jamshid Ardalankia</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="{prefix}styles.css">
+  <link rel="stylesheet" href="{prefix}styles.css?v={style_version}">
 </head>
 <body class="modern-site" id="top">
   <a class="skip-link" href="#main">Skip to content</a>
