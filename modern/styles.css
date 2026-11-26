@@ -1,6 +1,7 @@
 :root {
   color-scheme: light;
   --navy: #00008b;
+  --title-ink: #18374b;
   --ink: #273844;
   --muted: #52636c;
   --teal: #155c60;
@@ -167,8 +168,9 @@ a:hover { color: var(--navy); text-decoration-thickness: 2px; }
   column-gap: clamp(.8rem, 2vw, 1.55rem);
 }
 .paper-heading h3, .paper-heading h4, .course-heading h3 { text-wrap: pretty; }
+.paper-heading :is(h3, h4, h5), .program-list :is(h3, h4) { color: var(--title-ink); }
 .paper-heading a, .program-list :is(h3, h4) a {
-  color: var(--navy);
+  color: var(--title-ink);
   text-decoration-color: #8ea6aa;
 }
 .paper-heading a:hover, .program-list :is(h3, h4) a:hover { color: var(--teal); text-decoration-color: currentColor; }
@@ -300,3 +302,4 @@ summary:hover { text-decoration: underline; text-underline-offset: .2em; }
   h1, h2, h3, h4, h5, .paper-heading { break-after: avoid; }
   .course, .paper:not(:has(details[open])), .paper-figure { break-inside: avoid; }
 }
+
