@@ -26,3 +26,27 @@ For an already-rendered static copy, run the same generator with
 
 The alternate pages use `noindex, follow` while the two designs are being
 compared. The original site's indexing behavior is unchanged.
+
+## Compact academic presentation
+
+The layout follows the proportions and reading hierarchy of a traditional
+faculty research page: a 236px profile column, compact sans-serif paper titles,
+muted metadata, one blue accent, and rules beneath section headings. Abstracts
+and publication figures remain in native, keyboard-accessible disclosures.
+Research, teaching, education, experience, service, conferences, applications,
+and data-source details are retained from the shared source pages.
+
+## Red completion squares
+
+The generator adds small red disclosures for material the owner has not yet
+provided: a higher-resolution portrait, public overviews for the two working
+papers without summaries, teaching-evaluation evidence, and selected code links.
+They contain prompts, not fabricated content. Remove a corresponding reminder
+when supplying the material. Working-paper overview reminders disappear when
+an abstract/overview disclosure is added to the original paper entry. Code
+reminders disappear when `_data/research_code.csv` contains a release.
+
+The existing image is only 126 × 128 pixels; replace it with an approved image
+of at least 600 × 600 pixels before removing the portrait reminder. Keep
+unpublished research at the public level of detail approved by the owner.
+
