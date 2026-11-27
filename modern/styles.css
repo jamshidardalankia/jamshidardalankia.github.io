@@ -40,9 +40,9 @@ a:hover { text-decoration: underline; }
 .page-header h1 { font-size: 1.25rem; }
 .content h2 { margin-bottom: 1rem; }
 .content h3, .content h4, .content h5 { color: var(--ink); font-size: 1rem; font-weight: 600; line-height: 1.4; }
-.content :is(.group, .teaching-group, .subpage-section, .major) + :is(.group, .teaching-group, .subpage-section, .major),
-.content .earlier-teaching, .repository-directory + .subpage-section, .teaching-approach + .teaching-group, .about-intro + .major { margin-top: 2.65rem; }
-.entry + .entry, .course + .course, .fact + .fact { margin-top: 1.4rem; }
+.content :is(.group, .teaching-group, .subpage-section, .major, .fact) + :is(.group, .teaching-group, .subpage-section, .major, .fact),
+.content .earlier-teaching, .repository-directory + .subpage-section, .teaching-approach + .teaching-group, .about-intro + :is(.major, .fact) { margin-top: 3rem; }
+.entry + .entry, .course + .course { margin-top: 1.75rem; }
 .paper-heading, .course-heading { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .1rem 1rem; align-items: baseline; }
 .paper-heading :is(h3, h4, h5) { text-wrap: pretty; }
 .paper-heading a, .program-list :is(h3, h4) a { color: var(--ink); }
@@ -82,8 +82,8 @@ summary:hover { text-decoration: underline; text-underline-offset: .18em; }
 .program-list { margin-block: .8rem; }
 .program-list li + li, .resource-list li + li { margin-top: 1.2rem; }
 .earlier-teaching[open] > summary { margin-bottom: .75rem; }
-.prior-degree, .prior-role, .fact-more .details-body h3:not(:first-child) { margin-top: 1rem; }
-.fact-more { margin-top: .5rem; }
+.prior-degree, .prior-role, .fact-more .details-body h3:not(:first-child) { margin-top: 1.5rem; }
+.fact-more { margin-top: .75rem; }
 .resource-title { font-size: 1rem; font-weight: 600; }
 .related-paper { display: block; width: fit-content; }
 .actions { margin-top: .5rem; }
