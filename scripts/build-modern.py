@@ -71,6 +71,33 @@ def resource_disclosure(paper_id, kind, label, title, body, pending=False):
             f'{escape(label)}{marker}</summary><div class="resource-content">{body}</div></details>')
 
 
+def earlier_preprints(root):
+    """Keep earlier public work accessible without crowding current research."""
+    data_path = root / "_data/earlier_preprints.json"
+    records = json.loads(data_path.read_text()) if data_path.exists() else []
+    if not records:
+        return ""
+    papers = []
+    for item in records:
+        authors = [f'<strong>{escape(name)}</strong>' if name == "Jamshid Ardalankia" else escape(name)
+                   for name in item["authors"]]
+        byline = ', '.join(authors[:-1]) + ', and ' + authors[-1] if len(authors) > 1 else authors[0]
+        title = escape(item["title"])
+        papers.append(
+            f'<article class="entry paper" id="{escape(item["id"], quote=True)}">'
+            f'<div class="paper-heading"><h3>{resource_link(item["url"], item["title"])}</h3>'
+            f'<time class="paper-year" datetime="{item["year"]}">{item["year"]}</time></div>'
+            f'<p class="byline">{byline}</p>'
+            f'<details class="paper-abstract"><summary><span>Abstract</span>'
+            f'<span class="sr-only"> for {title}</span></summary>'
+            f'{resource_link(item["url"], "Read the original abstract on arXiv", "manuscript-link")}'
+            '</details></article>')
+    return ('<section class="group" id="earlier-preprints" aria-labelledby="preprints-heading">'
+            '<h2 class="label" id="preprints-heading">Earlier preprints</h2>'
+            f'<details class="research-archive"><summary>View earlier preprints ({len(records)})</summary>'
+            '<div class="details-body">' + ''.join(papers) + '</div></details></section>')
+
+
 def add_paper_resources(research, root):
     """Keep every paper's links and disclosures together without fabricating assets."""
     data_path = root / "_data/paper_resources.json"
@@ -149,6 +176,8 @@ def build(root):
     research = element(home, "section", 'id="research"')
     research = re.sub(r'<h2\b[^>]*>Research</h2>', '', research, count=1)
     research = lower_levels(research).replace('href="./figures/', 'href="../figures/').replace('src="./figures/', 'src="../figures/')
+    archive = earlier_preprints(root)
+    research = research.replace('<section class="group meetings"', archive + '\n<section class="group meetings"', 1)
     research = add_paper_resources(research, root)
     teaching = element(home, "section", 'id="teaching"')
     teaching = re.sub(r'<h2\b[^>]*>Teaching</h2>', '', teaching, count=1)

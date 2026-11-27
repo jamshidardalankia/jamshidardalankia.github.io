@@ -82,3 +82,18 @@ when filling those fields. The player uses native audio controls, no autoplay,
 and no preloading. Use the AI/review description only when it is accurate.
 For a rendered Sites copy, copy the JSON and research-code CSV into its `_data`
 directory before regenerating the pages with `--root`.
+
+## Earlier preprints
+
+`_data/earlier_preprints.json` lists earlier arXiv work separately from current
+working papers and publications. It generates a collapsed section after Work
+in progress and before conference activity. It retains the standard resource
+row and My role panel. The year is the original arXiv posting year; paper titles
+and author order follow the available paper records. The survival paper's older
+title, "Optimized Memory Reveals the Survival Strategy for a Multi-agent
+Competition", refers to the same arXiv identifier and must not be duplicated.
+
+Link to the original abstract until its exact text is available for reuse; do
+not invent an abstract or infer journal-submission history. The section makes
+no claim about whether a paper has been submitted, rejected, or peer reviewed.
+Copy this JSON into the rendered mirror's `_data` directory before rebuilding.

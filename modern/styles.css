@@ -97,6 +97,7 @@ summary:hover { text-decoration: underline; text-underline-offset: .18em; }
 .paper-figure figcaption { margin-top: .5rem; color: var(--muted); font-size: .875rem; line-height: 1.5; }
 .manuscript-link, .related-paper, .actions a, .program-list + a { display: inline-block; padding-block: .15rem; font-size: .875rem; }
 .details-body { padding-block: .5rem .8rem; }
+.research-archive > .details-body { padding-top: 1rem; }
 .conference + .conference { margin-top: .9rem; }
 .conference > summary, .earlier-teaching > summary { color: var(--ink); font-size: 1rem; font-weight: 600; line-height: 1.45; }
 .meeting-place { display: inline-block; font-weight: 400; }
