@@ -30,17 +30,20 @@ compared. The original site's indexing behavior is unchanged.
 ## Compact academic presentation
 
 The layout follows the proportions and reading hierarchy of a traditional
-faculty research page: a 236px profile column, compact sans-serif paper titles,
-muted metadata, one blue accent, and rules beneath section headings. Abstracts
+faculty research page: a 208px profile column, a 160px portrait, compact sans-serif paper titles,
+muted metadata, one blue accent, and whitespace between sections. Section
+headings use sentence case; navigation rows have no borders. Abstracts
 and publication figures remain in native, keyboard-accessible disclosures.
 Research, teaching, education, experience, service, conferences, applications,
 and data-source details are retained from the shared source pages.
 
 ## Completion markers
 
-The generator adds small navy disclosures for material the owner has not yet
-provided: a higher-resolution portrait, public overviews, research resources,
-role descriptions, teaching-evaluation evidence, and selected code links.
+The generator keeps a single, collapsed Materials to add checklist at the end
+of each page. On Research, it groups missing paper links, code, audio, overviews,
+and personal-role descriptions by project. It also retains the portrait reminder;
+on Teaching, it includes the evaluation-evidence reminder. Other existing code
+reminders remain available on their relevant pages. Markers use the navy accent.
 They contain prompts, not fabricated content. Remove a corresponding reminder
 when supplying the material. Working-paper overview reminders disappear when
 an abstract/overview disclosure is added to the original paper entry. Code
@@ -52,11 +55,13 @@ unpublished research at the public level of detail approved by the owner.
 
 ## Resources and personal contributions
 
-Every research entry, including working papers and the invited book chapter,
-has the same compact row: Paper, Code, Audio summary, Abstract (or Overview),
-and My role. Native disclosures open inline and share a per-paper `name`, so
-supporting browsers keep one panel open at a time. Missing material is marked
-by a small navy square and an explicit note; there are no dead or invented links.
+Each research entry shows only its available resources, in a consistent order:
+Paper, Code, Audio summary, Abstract (or Overview), and My role. Missing resources
+are listed in the end-of-page completion checklist, rather than repeated as
+empty controls beside every paper. Entries with no ready resources have no
+resource row. Native disclosures open inline and share a per-paper `name`, so
+supporting browsers keep one panel open at a time. There are no dead or invented
+links. The same pattern supports earlier preprints and the invited book chapter.
 The classic version remains unchanged.
 
 Edit `_data/paper_resources.json` using the article IDs from `index.html`, then
@@ -87,8 +92,8 @@ directory before regenerating the pages with `--root`.
 
 `_data/earlier_preprints.json` lists earlier arXiv work separately from current
 working papers and publications. It generates a collapsed section after
-publications and before conference activity. It retains the standard resource
-row and My role panel. The year is the original arXiv posting year; paper titles
+publications and before conference activity. It uses the same available-resource row; missing My role descriptions are
+retained in the completion checklist. The year is the original arXiv posting year; paper titles
 and author order follow the available paper records. The survival paper's older
 title, "Optimized Memory Reveals the Survival Strategy for a Multi-agent
 Competition", refers to the same arXiv identifier and must not be duplicated.
@@ -108,11 +113,12 @@ current manuscripts. No empty Work in progress heading remains. This display
 choice does not imply that methods or results are final. Keep their existing
 public descriptions; do not add findings. The saved classic layout is unchanged.
 
-Section headings use 17px, entry titles 15px, paper metadata 13px on desktop
-(14px on smaller screens), resource links 14px, and abstracts 16px at the
+Section headings use 18px with weight 600; entry titles use 16px with weight
+500; paper metadata and resource links use 14px; abstracts use 16px. Recognition
+notes use 13px on desktop and 14px on smaller screens. These values respect the
 default browser setting. Research interests use 15px, with understated linked
 topics that lead to the relevant project on the same page. The 48px section gaps
-and 28px entry gaps preserve the reading hierarchy. Keep the established
+and 32px entry gaps preserve the reading hierarchy. Keep the established
 DarkBlue accent. `modern/favicon.svg` is a local typographic JA monogram, shared
 by all five modern pages; copy it alongside the stylesheet when rendering the
 Sites mirror. The Scholar screenshot confirms the two earlier preprints and
@@ -131,7 +137,8 @@ section. Add other paper-specific honors only when their attribution is known.
 ## Open conference and teaching groups
 
 Conference groups use regular headings and indented paper lists. They are
-always visible, including earlier conference activity and honors. Preserve the
+always visible, including earlier conference activity and honors. Program titles use regular
+15px text to distinguish them from the primary research entries. Preserve the
 SEA IDs, original program titles, authors, and links; label the counts as
 accepted papers rather than claiming every accepted talk was delivered.
 

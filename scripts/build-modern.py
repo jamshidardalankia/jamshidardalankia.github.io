@@ -160,6 +160,7 @@ def add_paper_resources(research, root):
     resources = json.loads(data_path.read_text()) if data_path.exists() else {}
     code_path = root / "_data/research_code.csv"
     releases = list(csv.DictReader(code_path.open())) if code_path.exists() else []
+    missing_items = []
 
     for match in list(re.finditer(r'<article class="entry paper" id="([^"]+)"', research)):
         paper_id = match[1]
@@ -178,19 +179,18 @@ def add_paper_resources(research, root):
         heading_link = re.search(r'href="([^"]+)"', heading_text)
         paper_url = entry.get("paper_url") or (unescape(heading_link[1]) if heading_link else "")
         row = []
+        missing = []
 
         if paper_url:
             row.append(resource_link(paper_url, "Paper", "paper-resource-link resource-paper", "Read " + title))
         else:
-            row.append(resource_disclosure(paper_id, "paper", "Paper", title,
-                       '<p class="resource-note">Public manuscript link to be added.</p>', True))
+            missing.append("public manuscript link")
 
         code_url = entry.get("code_url") or next((r["repository"] for r in releases if r["paper_id"] == paper_id and r.get("repository")), "")
         if code_url:
             row.append(resource_link(code_url, "Code", "paper-resource-link resource-code", "Code for " + title))
         else:
-            row.append(resource_disclosure(paper_id, "code", "Code", title,
-                       '<p class="resource-note">Public code repository link to be added.</p>', True))
+            missing.append("code repository")
 
         audio = entry.get("audio") or {}
         if audio.get("src"):
@@ -202,8 +202,7 @@ def add_paper_resources(research, root):
                 audio_body += resource_link(audio["transcript_url"], "Read transcript", "resource-transcript")
             row.append(resource_disclosure(paper_id, "audio", "Audio summary", title, audio_body))
         else:
-            row.append(resource_disclosure(paper_id, "audio", "Audio summary", title,
-                       '<p class="resource-note">Audio summary to be added.</p>', True))
+            missing.append("audio summary")
 
         if 'class="paper-abstract"' in paper:
             abstract = element(paper, "details", 'class="paper-abstract"')
@@ -212,20 +211,26 @@ def add_paper_resources(research, root):
             row.append(resource_disclosure(paper_id, "abstract", label, title, body))
             updated = updated.replace(abstract, "")
         else:
-            row.append(resource_disclosure(paper_id, "abstract", "Overview", title,
-                       '<p class="resource-note">Short public overview to be added.</p>', True))
+            missing.append("public overview")
 
         role = entry.get("role", "")
-        role_body = f'<p class="role-text">{escape(role)}</p>' if role else '<p class="resource-note">Brief description of my contribution to be added.</p>'
-        row.append(resource_disclosure(paper_id, "role", "My role", title, role_body, not role))
+        if role:
+            role_body = f'<p class="role-text">{escape(role)}</p>'
+            row.append(resource_disclosure(paper_id, "role", "My role", title, role_body))
+        else:
+            missing.append("My role description")
+        if missing:
+            missing_items.append(f'<li>{resource_link("#" + paper_id, title)}'
+                                 f'<p>To add: {escape(", ".join(missing))}.</p></li>')
 
         # The modern resource row replaces the classic code include/link.
         updated = re.sub(r'{%\s*include paper-code\.html\s+paper="[^"]+"\s*%}', '', updated)
         updated = re.sub(r'<a\b[^>]*class="[^"]*project-code[^\"]*"[^>]*>.*?</a>', '', updated, flags=re.S)
-        row_html = f'<div class="paper-resources" role="group" aria-label="Resources for {escape(title, quote=True)}">' + ''.join(row) + '</div>'
+        row_html = (f'<div class="paper-resources" role="group" aria-label="Resources for {escape(title, quote=True)}">'
+                    + ''.join(row) + '</div>') if row else ""
         updated = updated.replace('</article>', row_html + '</article>')
         research = research.replace(paper, updated)
-    return research
+    return research, missing_items
 
 
 def build(root):
@@ -241,12 +246,11 @@ def build(root):
     research = organize_research(research)
     archive = earlier_preprints(root)
     research = research.replace('<section class="group meetings"', archive + '\n<section class="group meetings"', 1)
-    research = add_paper_resources(research, root)
+    research, missing_paper_items = add_paper_resources(research, root)
     research = open_conference_groups(research)
     teaching = element(home, "section", 'id="teaching"')
     teaching = re.sub(r'<h2\b[^>]*>Teaching</h2>', '', teaching, count=1)
     teaching = organize_teaching(lower_levels(teaching))
-    teaching += '<section class="teaching-group" aria-labelledby="evaluations-heading"><h2 id="evaluations-heading">Teaching evaluations</h2>' + reminder('Teaching evaluation summary', 'Add an exact, anonymous student quote with its course and term, or a rating with its scale and number of responses.', True) + '</section>'
     education = element(home, "section", 'id="education"')
     experience = element(home, "section", 'id="experience"')
     service = element(home, "section", 'id="service"')
@@ -282,7 +286,14 @@ def build(root):
             nav.append(f'<a href="{href}"{current}>{label}</a>')
         description = intro or f"{title} — Jamshid Ardalankia, PhD candidate in Economics at Virginia Tech."
         heading = f'<h1 id="{heading_id}" class="sr-only">Research</h1>' if not slug else f'<header class="page-header"><h1 id="{heading_id}">{title}</h1></header>'
-        portrait_note = reminder('Add a higher-resolution portrait', 'Replace the current 126 × 128 pixel image with a higher-resolution portrait, ideally at least 600 × 600 pixels.')
+        material_items = ['<li><span>Higher-resolution portrait</span><p>Replace the current 126 × 128 pixel image with an approved portrait of at least 600 × 600 pixels.</p></li>']
+        if not slug:
+            material_items.extend(missing_paper_items)
+        if slug == "teaching":
+            material_items.append('<li><span>Teaching evaluation summary</span><p>Add an exact, anonymous student quote with its course and term, or a rating with its scale and number of responses.</p></li>')
+        completion_checklist = ('<details class="completion-checklist"><summary>'
+                                '<span class="missing-square" aria-hidden="true"></span>Materials to add</summary>'
+                                '<ul>' + ''.join(material_items) + '</ul></details>')
         page = f'''{frontmatter}<!doctype html>
 <html lang="en">
 <head>
@@ -301,8 +312,8 @@ def build(root):
   <div class="site-shell">
     <header class="sidebar">
       <div class="identity">
-        <p class="institution">VIRGINIA TECH</p>
-        <div class="portrait-wrap"><img class="portrait" src="{classic}assets/profile.jpg" width="126" height="128" alt="Jamshid Ardalankia speaking at an event">{portrait_note}</div>
+        <p class="institution">Virginia Tech</p>
+        <div class="portrait-wrap"><img class="portrait" src="{classic}assets/profile.jpg" width="126" height="128" alt="Jamshid Ardalankia speaking at an event"></div>
         <a class="name" href="{prefix}">Jamshid Ardalankia</a>
         <p class="role">PhD candidate in Economics</p>
         <p class="affiliation">Department of Economics</p>
@@ -319,7 +330,7 @@ def build(root):
         {heading}
         {content}
       </main>
-      <p class="reminder-key"><span class="missing-square" aria-hidden="true"></span>Material to add — select a square for details.</p>
+      {completion_checklist}
       <footer class="site-footer"><span>© Jamshid Ardalankia</span><a href="#top">Back to top</a></footer>
     </div>
   </div>
