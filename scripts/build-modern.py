@@ -109,7 +109,8 @@ def organize_research(research):
                     '<h2 id="interests-heading">Research interests</h2>'
                     '<p>Financial economics, with a focus on financial networks, '
                     'systemic risk and financial crises, asset pricing and portfolio choice, '
-                    'and AI in finance.</p></section>')
+                    'and <a href="#ai-investor-behavior">AI, large language models, '
+                    'and financial market stability</a>.</p></section>')
     organized = research.replace(progress, "").replace(
         working, introduction + '\n' + working_updated + '\n' + progress_updated, 1)
     return re.sub(r'(?m)^[ \t]+$', '', organized)
