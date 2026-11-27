@@ -86,8 +86,8 @@ directory before regenerating the pages with `--root`.
 ## Earlier preprints
 
 `_data/earlier_preprints.json` lists earlier arXiv work separately from current
-working papers and publications. It generates a collapsed section after Work
-in progress and before conference activity. It retains the standard resource
+working papers and publications. It generates a collapsed section after
+publications and before conference activity. It retains the standard resource
 row and My role panel. The year is the original arXiv posting year; paper titles
 and author order follow the available paper records. The survival paper's older
 title, "Optimized Memory Reveals the Survival Strategy for a Multi-agent
@@ -97,3 +97,21 @@ Link to the original abstract until its exact text is available for reuse; do
 not invent an abstract or infer journal-submission history. The section makes
 no claim about whether a paper has been submitted, rejected, or peer reviewed.
 Copy this JSON into the rendered mirror's `_data` directory before rebuilding.
+
+## Research stages and visual hierarchy
+
+The research page starts with a concise research-interest statement supplied
+by the owner. The order is Working papers & manuscripts, Work in progress,
+Publications (including the invited chapter), Earlier preprints, and conferences.
+`organize_research` moves `local-pathways` into Work in progress alongside
+`ai-investor-behavior`; both projects still have methods or analysis underway.
+This classification applies to the modern version and does not alter the saved
+classic layout. Keep their existing public descriptions; do not add findings.
+
+Section headings use 17px, entry titles 15px, metadata and resource links 14px,
+and prose/abstracts 16px at the default browser setting. The 48px section gaps
+and 28px entry gaps preserve the reading hierarchy. Keep the established
+DarkBlue accent. `modern/favicon.svg` is a local typographic JA monogram, shared
+by all five modern pages; copy it alongside the stylesheet when rendering the
+Sites mirror. The Scholar screenshot confirms the two earlier preprints and
+shows two records for the same book-chapter title, which remains one site entry.

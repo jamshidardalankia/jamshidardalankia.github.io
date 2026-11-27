@@ -98,6 +98,23 @@ def earlier_preprints(root):
             '<div class="details-body">' + ''.join(papers) + '</div></details></section>')
 
 
+def organize_research(research):
+    """Distinguish developing projects from manuscripts ready to circulate."""
+    working = element(research, "section", 'aria-labelledby="working-heading"')
+    progress = element(research, "section", 'aria-labelledby="progress-heading"')
+    developing = element(working, "article", 'id="local-pathways"')
+    working_updated = working.replace(developing, "")
+    progress_updated = progress.replace('</h2>', '</h2>\n' + developing, 1)
+    introduction = ('<section class="research-intro" aria-labelledby="interests-heading">'
+                    '<h2 id="interests-heading">Research interests</h2>'
+                    '<p>Financial economics, with a focus on financial networks, '
+                    'systemic risk and financial crises, asset pricing and portfolio choice, '
+                    'and AI in finance.</p></section>')
+    organized = research.replace(progress, "").replace(
+        working, introduction + '\n' + working_updated + '\n' + progress_updated, 1)
+    return re.sub(r'(?m)^[ \t]+$', '', organized)
+
+
 def add_paper_resources(research, root):
     """Keep every paper's links and disclosures together without fabricating assets."""
     data_path = root / "_data/paper_resources.json"
@@ -176,6 +193,7 @@ def build(root):
     research = element(home, "section", 'id="research"')
     research = re.sub(r'<h2\b[^>]*>Research</h2>', '', research, count=1)
     research = lower_levels(research).replace('href="./figures/', 'href="../figures/').replace('src="./figures/', 'src="../figures/')
+    research = organize_research(research)
     archive = earlier_preprints(root)
     research = research.replace('<section class="group meetings"', archive + '\n<section class="group meetings"', 1)
     research = add_paper_resources(research, root)
@@ -229,7 +247,7 @@ def build(root):
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="script-src 'none'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>{title} | Jamshid Ardalankia</title>
-  <link rel="icon" href="data:,">
+  <link rel="icon" type="image/svg+xml" href="{prefix}favicon.svg">
   <link rel="stylesheet" href="{prefix}styles.css?v={style_version}">
 </head>
 <body class="modern-site" id="top">

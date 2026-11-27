@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Jamshid Ardalankia</title>
+  <rect width="64" height="64" rx="11" fill="#00008b"/>
+  <path fill="#fff" d="M12 16h16v22c0 8-4 12-11 12S6 46 6 39h6c0 4 2 6 5 6s5-2 5-7V22H12z"/>
+  <path fill="#fff" fill-rule="evenodd" d="M39 16h6l13 33h-7l-3-8H36l-3 8h-7zm3 8-4 11h8z"/>
+</svg>
