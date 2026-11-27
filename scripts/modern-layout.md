@@ -108,10 +108,22 @@ Publications (including the invited chapter), Earlier preprints, and conferences
 This classification applies to the modern version and does not alter the saved
 classic layout. Keep their existing public descriptions; do not add findings.
 
-Section headings use 17px, entry titles 15px, metadata and resource links 14px,
-and prose/abstracts 16px at the default browser setting. The 48px section gaps
+Section headings use 17px, entry titles 15px, paper metadata 13px on desktop
+(14px on smaller screens), resource links 14px, and abstracts 16px at the
+default browser setting. Research interests use 15px, with understated linked
+topics that lead to the relevant project on the same page. The 48px section gaps
 and 28px entry gaps preserve the reading hierarchy. Keep the established
 DarkBlue accent. `modern/favicon.svg` is a local typographic JA monogram, shared
 by all five modern pages; copy it alongside the stylesheet when rendering the
 Sites mirror. The Scholar screenshot confirms the two earlier preprints and
 shows two records for the same book-chapter title, which remains one site entry.
+
+## Paper-level recognition
+
+`recognition` in `_data/paper_resources.json` is an optional list of objects
+with `text` and a supporting `source`. Render only the short text beneath the
+authors, in muted italic type. The four initial notes repeat acceptances already
+recorded in the SEA conference section. Use "Accepted for presentation"; do
+not imply that an accepted talk was delivered or that acceptance was an award.
+Keep dates, locations, program titles, and supporting links in the conference
+section. Add other paper-specific honors only when their attribution is known.

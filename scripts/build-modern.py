@@ -107,9 +107,11 @@ def organize_research(research):
     progress_updated = progress.replace('</h2>', '</h2>\n' + developing, 1)
     introduction = ('<section class="research-intro" aria-labelledby="interests-heading">'
                     '<h2 id="interests-heading">Research interests</h2>'
-                    '<p>Financial economics, with a focus on financial networks, '
-                    'systemic risk and financial crises, asset pricing and portfolio choice, '
-                    'and <a href="#ai-investor-behavior">AI, large language models, '
+                    '<p>Financial economics: '
+                    '<a href="#ardalankia2025hidden">financial networks</a>; '
+                    '<a href="#local-pathways">systemic risk and financial crises</a>; '
+                    '<a href="#structural-crowding">asset pricing and portfolio choice</a>; '
+                    '<a href="#ai-investor-behavior">AI, large language models, '
                     'and financial market stability</a>.</p></section>')
     organized = research.replace(progress, "").replace(
         working, introduction + '\n' + working_updated + '\n' + progress_updated, 1)
@@ -131,6 +133,12 @@ def add_paper_resources(research, root):
         heading_text = re.search(r'<h[3-5]\b[^>]*>(.*?)</h[3-5]>', heading, re.S)[1]
         title = unescape(re.sub(r'<[^>]+>', '', heading_text))
         entry = resources.get(paper_id, {})
+        recognition = entry.get("recognition", [])
+        if recognition:
+            byline = element(updated, "p", 'class="byline"')
+            notes = ''.join(f'<p class="paper-recognition">{escape(item["text"])}</p>'
+                            for item in recognition)
+            updated = updated.replace(byline, byline + notes, 1)
         heading_link = re.search(r'href="([^"]+)"', heading_text)
         paper_url = entry.get("paper_url") or (unescape(heading_link[1]) if heading_link else "")
         row = []

@@ -1,12 +1,22 @@
 {
-  "structural-crowding": {"role": "", "code_url": "", "audio": null},
-  "crypto-regimes": {"role": "", "code_url": "", "audio": null},
-  "local-pathways": {"role": "", "code_url": "", "audio": null},
+  "structural-crowding": {
+    "role": "", "code_url": "", "audio": null,
+    "recognition": [{"text": "Accepted for presentation · Southern Economic Association, 2026", "source": "#sea-houston-2026"}]
+  },
+  "crypto-regimes": {
+    "role": "", "code_url": "", "audio": null,
+    "recognition": [{"text": "Accepted for presentation · Southern Economic Association, 2026", "source": "#sea-houston-2026"}]
+  },
+  "local-pathways": {
+    "role": "", "code_url": "", "audio": null,
+    "recognition": [{"text": "Accepted for presentation · Southern Economic Association, 2026", "source": "#sea-houston-2026"}]
+  },
   "ardalankia2025hidden": {
     "role": "Contributed to the research design and methodology; curated and analyzed the data; developed the software and visualizations; and drafted and revised the manuscript.",
     "role_source": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0330372",
     "code_url": "",
-    "audio": null
+    "audio": null,
+    "recognition": [{"text": "Accepted for presentation · Southern Economic Association, 2025", "source": "#sea-tampa-2025"}]
   },
   "ardalankia2021mapping": {"role": "", "code_url": "", "audio": null},
   "namaki2021banking": {
