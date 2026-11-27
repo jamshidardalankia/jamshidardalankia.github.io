@@ -99,12 +99,11 @@ def earlier_preprints(root):
 
 
 def organize_research(research):
-    """Distinguish developing projects from manuscripts ready to circulate."""
+    """Group the four current manuscripts as requested by the owner."""
     working = element(research, "section", 'aria-labelledby="working-heading"')
     progress = element(research, "section", 'aria-labelledby="progress-heading"')
-    developing = element(working, "article", 'id="local-pathways"')
-    working_updated = working.replace(developing, "")
-    progress_updated = progress.replace('</h2>', '</h2>\n' + developing, 1)
+    ai_project = element(progress, "article", 'id="ai-investor-behavior"')
+    working_updated = working.replace('</section>', ai_project + '\n</section>', 1)
     introduction = ('<section class="research-intro" aria-labelledby="interests-heading">'
                     '<h2 id="interests-heading">Research interests</h2>'
                     '<p>Financial economics: '
@@ -114,8 +113,45 @@ def organize_research(research):
                     '<a href="#ai-investor-behavior">AI, large language models, '
                     'and financial market stability</a>.</p></section>')
     organized = research.replace(progress, "").replace(
-        working, introduction + '\n' + working_updated + '\n' + progress_updated, 1)
+        working, introduction + '\n' + working_updated, 1)
     return re.sub(r'(?m)^[ \t]+$', '', organized)
+
+
+def open_conference_groups(research):
+    """Show each conference and its indented paper list without disclosures."""
+    for number, match in enumerate(list(re.finditer(r'<details class="disclosure conference"[^>]*>', research)), 1):
+        block = element(research, "details", match.group())
+        summary = element(block, "summary", "")
+        body = inner(element(block, "div", 'class="details-body"'))
+        body = re.sub(r'(<\/?h)3\b', r'\g<1>4', body)
+        body = body.replace('Three papers accepted for presentation.', '3 papers accepted for presentation.')
+        body = body.replace('One paper accepted for presentation', '1 paper accepted for presentation')
+        existing_id = re.search(r'\bid="([^"]+)"', match.group())
+        group_id = existing_id[1] if existing_id else f'conference-history-{number}'
+        expanded = (f'<section class="conference" id="{group_id}" aria-labelledby="{group_id}-heading">'
+                    f'<h3 id="{group_id}-heading">{inner(summary)}</h3>'
+                    f'<div class="conference-body">{body}</div></section>')
+        research = research.replace(block, expanded, 1)
+    return research
+
+
+def organize_teaching(teaching):
+    """Keep instruction and mentoring visible under their actual role headings."""
+    earlier = element(teaching, "details", 'class="disclosure earlier-teaching"')
+    courses = re.findall(r'<article class="course">.*?</article>', earlier, re.S)
+    python_course = next(course for course in courses if '<h3>Python Programming</h3>' in course)
+    mentoring_course = next(course for course in courses if 'Investment Management and Computational Programming' in course)
+    instruction = element(teaching, "section", 'aria-labelledby="teach-instruction"')
+    updated_instruction = instruction.replace('</section>', python_course + '\n</section>', 1)
+    design = element(teaching, "section", 'aria-labelledby="teach-design"')
+    mentoring = ('<section class="teaching-group" aria-labelledby="teach-mentoring">'
+                 '<h2 class="label" id="teach-mentoring">Teaching and thesis mentoring</h2>'
+                 + mentoring_course + '</section>')
+    teaching = teaching.replace(earlier, '').replace(instruction, updated_instruction, 1)
+    teaching = teaching.replace(design, mentoring + '\n' + design, 1)
+    teaching = teaching.replace('Guest lecture on copulas.',
+                                'Guest lecture on copulas and programming for econometric analysis.', 1)
+    return teaching
 
 
 def add_paper_resources(research, root):
@@ -206,9 +242,10 @@ def build(root):
     archive = earlier_preprints(root)
     research = research.replace('<section class="group meetings"', archive + '\n<section class="group meetings"', 1)
     research = add_paper_resources(research, root)
+    research = open_conference_groups(research)
     teaching = element(home, "section", 'id="teaching"')
     teaching = re.sub(r'<h2\b[^>]*>Teaching</h2>', '', teaching, count=1)
-    teaching = lower_levels(teaching)
+    teaching = organize_teaching(lower_levels(teaching))
     teaching += '<section class="teaching-group" aria-labelledby="evaluations-heading"><h2 id="evaluations-heading">Teaching evaluations</h2>' + reminder('Teaching evaluation summary', 'Add an exact, anonymous student quote with its course and term, or a rating with its scale and number of responses.', True) + '</section>'
     education = element(home, "section", 'id="education"')
     experience = element(home, "section", 'id="experience"')

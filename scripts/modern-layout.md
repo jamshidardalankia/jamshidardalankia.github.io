@@ -36,9 +36,9 @@ and publication figures remain in native, keyboard-accessible disclosures.
 Research, teaching, education, experience, service, conferences, applications,
 and data-source details are retained from the shared source pages.
 
-## Red completion squares
+## Completion markers
 
-The generator adds small red disclosures for material the owner has not yet
+The generator adds small navy disclosures for material the owner has not yet
 provided: a higher-resolution portrait, public overviews, research resources,
 role descriptions, teaching-evaluation evidence, and selected code links.
 They contain prompts, not fabricated content. Remove a corresponding reminder
@@ -56,7 +56,7 @@ Every research entry, including working papers and the invited book chapter,
 has the same compact row: Paper, Code, Audio summary, Abstract (or Overview),
 and My role. Native disclosures open inline and share a per-paper `name`, so
 supporting browsers keep one panel open at a time. Missing material is marked
-by a small red square and an explicit note; there are no dead or invented links.
+by a small navy square and an explicit note; there are no dead or invented links.
 The classic version remains unchanged.
 
 Edit `_data/paper_resources.json` using the article IDs from `index.html`, then
@@ -101,12 +101,12 @@ Copy this JSON into the rendered mirror's `_data` directory before rebuilding.
 ## Research stages and visual hierarchy
 
 The research page starts with a concise research-interest statement supplied
-by the owner. The order is Working papers & manuscripts, Work in progress,
-Publications (including the invited chapter), Earlier preprints, and conferences.
-`organize_research` moves `local-pathways` into Work in progress alongside
-`ai-investor-behavior`; both projects still have methods or analysis underway.
-This classification applies to the modern version and does not alter the saved
-classic layout. Keep their existing public descriptions; do not add findings.
+by the owner. The order is Working papers & manuscripts, Publications (including
+the invited chapter), Earlier preprints, and conferences. At the owner's request,
+`organize_research` groups `local-pathways` and `ai-investor-behavior` with the
+current manuscripts. No empty Work in progress heading remains. This display
+choice does not imply that methods or results are final. Keep their existing
+public descriptions; do not add findings. The saved classic layout is unchanged.
 
 Section headings use 17px, entry titles 15px, paper metadata 13px on desktop
 (14px on smaller screens), resource links 14px, and abstracts 16px at the
@@ -127,3 +127,16 @@ recorded in the SEA conference section. Use "Accepted for presentation"; do
 not imply that an accepted talk was delivered or that acceptance was an award.
 Keep dates, locations, program titles, and supporting links in the conference
 section. Add other paper-specific honors only when their attribution is known.
+
+## Open conference and teaching groups
+
+Conference groups use regular headings and indented paper lists. They are
+always visible, including earlier conference activity and honors. Preserve the
+SEA IDs, original program titles, authors, and links; label the counts as
+accepted papers rather than claiming every accepted talk was delivered.
+
+`organize_teaching` places Python Programming under Course instruction and the
+investment-management course under a visible Teaching and thesis mentoring
+heading. Their original roles and dates remain unchanged; no additional page or
+foldout is created. Data Science for Quantitative Finance includes the owner's
+guest-lecture topics: copulas and programming for econometric analysis.
