@@ -9,9 +9,11 @@ and styles are never changed. Jekyll markup is retained when present.
 import argparse
 import csv
 import hashlib
+import json
 import re
-from html import escape
+from html import escape, unescape
 from pathlib import Path
+from urllib.parse import urlsplit
 
 
 def element(text, tag, marker):
@@ -41,6 +43,102 @@ def reminder(label, explanation, visible=False):
             f'<p>{escape(explanation)}</p></details>')
 
 
+def resource_url(value):
+    """Allow web links and site-relative resources, never executable URLs."""
+    value = value.strip()
+    if not value:
+        return ""
+    parsed = urlsplit(value)
+    if parsed.scheme not in ("", "http", "https") or value.startswith("//"):
+        raise ValueError(f"Unsupported resource URL: {value}")
+    return value
+
+
+def resource_link(url, label, css_class="", description=""):
+    url = resource_url(url)
+    external = urlsplit(url).scheme in ("http", "https") and urlsplit(url).hostname != "jamshidardalankia.github.io"
+    target = ' target="_blank" rel="noopener"' if external else ""
+    accessible = f' aria-label="{escape(description, quote=True)}"' if description else ""
+    return f'<a class="{css_class}" href="{escape(url, quote=True)}"{target}{accessible}>{escape(label)}</a>'
+
+
+def resource_disclosure(paper_id, kind, label, title, body, pending=False):
+    marker = '<span class="missing-square" aria-hidden="true"></span>' if pending else ""
+    status = "; material to add" if pending else ""
+    state = " resource-pending" if pending else ""
+    return (f'<details class="paper-resource resource-{kind}{state}" name="resources-{paper_id}">'
+            f'<summary aria-label="{escape(label + " for " + title + status, quote=True)}">'
+            f'{escape(label)}{marker}</summary><div class="resource-content">{body}</div></details>')
+
+
+def add_paper_resources(research, root):
+    """Keep every paper's links and disclosures together without fabricating assets."""
+    data_path = root / "_data/paper_resources.json"
+    resources = json.loads(data_path.read_text()) if data_path.exists() else {}
+    code_path = root / "_data/research_code.csv"
+    releases = list(csv.DictReader(code_path.open())) if code_path.exists() else []
+
+    for match in list(re.finditer(r'<article class="entry paper" id="([^"]+)"', research)):
+        paper_id = match[1]
+        paper = element(research, "article", f'id="{paper_id}"')
+        updated = paper
+        heading = element(paper, "div", 'class="paper-heading"')
+        heading_text = re.search(r'<h[3-5]\b[^>]*>(.*?)</h[3-5]>', heading, re.S)[1]
+        title = unescape(re.sub(r'<[^>]+>', '', heading_text))
+        entry = resources.get(paper_id, {})
+        heading_link = re.search(r'href="([^"]+)"', heading_text)
+        paper_url = entry.get("paper_url") or (unescape(heading_link[1]) if heading_link else "")
+        row = []
+
+        if paper_url:
+            row.append(resource_link(paper_url, "Paper", "paper-resource-link resource-paper", "Read " + title))
+        else:
+            row.append(resource_disclosure(paper_id, "paper", "Paper", title,
+                       '<p class="resource-note">Public manuscript link to be added.</p>', True))
+
+        code_url = entry.get("code_url") or next((r["repository"] for r in releases if r["paper_id"] == paper_id and r.get("repository")), "")
+        if code_url:
+            row.append(resource_link(code_url, "Code", "paper-resource-link resource-code", "Code for " + title))
+        else:
+            row.append(resource_disclosure(paper_id, "code", "Code", title,
+                       '<p class="resource-note">Public code repository link to be added.</p>', True))
+
+        audio = entry.get("audio") or {}
+        if audio.get("src"):
+            audio_src = escape(resource_url(audio["src"]), quote=True)
+            audio_body = f'<audio controls preload="none" aria-label="Audio summary of {escape(title, quote=True)}" src="{audio_src}"></audio>'
+            if audio.get("description"):
+                audio_body += f'<p class="resource-note">{escape(audio["description"])}</p>'
+            if audio.get("transcript_url"):
+                audio_body += resource_link(audio["transcript_url"], "Read transcript", "resource-transcript")
+            row.append(resource_disclosure(paper_id, "audio", "Audio summary", title, audio_body))
+        else:
+            row.append(resource_disclosure(paper_id, "audio", "Audio summary", title,
+                       '<p class="resource-note">Audio summary to be added.</p>', True))
+
+        if 'class="paper-abstract"' in paper:
+            abstract = element(paper, "details", 'class="paper-abstract"')
+            label = "Overview" if re.search(r'<span>(?:View )?[Oo]verview</span>', abstract) else "Abstract"
+            body = re.sub(r'^\s*<summary\b[^>]*>.*?</summary>', '', inner(abstract), count=1, flags=re.S)
+            row.append(resource_disclosure(paper_id, "abstract", label, title, body))
+            updated = updated.replace(abstract, "")
+        else:
+            row.append(resource_disclosure(paper_id, "abstract", "Overview", title,
+                       '<p class="resource-note">Short public overview to be added.</p>', True))
+
+        role = entry.get("role", "")
+        role_body = f'<p class="role-text">{escape(role)}</p>' if role else '<p class="resource-note">Brief description of my contribution to be added.</p>'
+        row.append(resource_disclosure(paper_id, "role", "My role", title, role_body, not role))
+
+        # The modern resource row replaces the classic code include/link.
+        updated = re.sub(r'{%\s*include paper-code\.html\s+paper="[^"]+"\s*%}', '', updated)
+        updated = re.sub(r'<a\b[^>]*class="[^"]*project-code[^\"]*"[^>]*>.*?</a>', '', updated, flags=re.S)
+        row_html = f'<div class="paper-resources" role="group" aria-label="Resources for {escape(title, quote=True)}">' + ''.join(row) + '</div>'
+        updated = updated.replace('</article>', row_html + '</article>')
+        research = research.replace(paper, updated)
+    return research
+
+
 def build(root):
     style_version = hashlib.sha256((root / "modern/styles.css").read_bytes()).hexdigest()[:12]
     home = (root / "index.html").read_text()
@@ -51,14 +149,7 @@ def build(root):
     research = element(home, "section", 'id="research"')
     research = re.sub(r'<h2\b[^>]*>Research</h2>', '', research, count=1)
     research = lower_levels(research).replace('href="./figures/', 'href="../figures/').replace('src="./figures/', 'src="../figures/')
-    research = research.replace('<span>Overview</span>', '<span>View overview</span>')
-    research = research.replace('<span>Abstract and figure</span>', '<span>View abstract and figure</span>')
-    research = research.replace('<span>Abstract</span>', '<span>View abstract</span>')
-    for paper_id in ("crypto-regimes", "local-pathways"):
-        paper = element(research, "article", f'id="{paper_id}"')
-        if 'class="paper-abstract"' not in paper:
-            updated = paper.replace('</article>', reminder('Add a public overview', 'Add a short, approved overview of this working paper when ready. A full manuscript is not required.') + '</article>')
-            research = research.replace(paper, updated)
+    research = add_paper_resources(research, root)
     teaching = element(home, "section", 'id="teaching"')
     teaching = re.sub(r'<h2\b[^>]*>Teaching</h2>', '', teaching, count=1)
     teaching = lower_levels(teaching)
@@ -152,4 +243,3 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parents[1])
     build(parser.parse_args().root)
-

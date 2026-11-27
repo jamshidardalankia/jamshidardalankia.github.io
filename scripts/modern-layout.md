@@ -39,8 +39,8 @@ and data-source details are retained from the shared source pages.
 ## Red completion squares
 
 The generator adds small red disclosures for material the owner has not yet
-provided: a higher-resolution portrait, public overviews for the two working
-papers without summaries, teaching-evaluation evidence, and selected code links.
+provided: a higher-resolution portrait, public overviews, research resources,
+role descriptions, teaching-evaluation evidence, and selected code links.
 They contain prompts, not fabricated content. Remove a corresponding reminder
 when supplying the material. Working-paper overview reminders disappear when
 an abstract/overview disclosure is added to the original paper entry. Code
@@ -50,3 +50,35 @@ The existing image is only 126 × 128 pixels; replace it with an approved image
 of at least 600 × 600 pixels before removing the portrait reminder. Keep
 unpublished research at the public level of detail approved by the owner.
 
+## Resources and personal contributions
+
+Every research entry, including working papers and the invited book chapter,
+has the same compact row: Paper, Code, Audio summary, Abstract (or Overview),
+and My role. Native disclosures open inline and share a per-paper `name`, so
+supporting browsers keep one panel open at a time. Missing material is marked
+by a small red square and an explicit note; there are no dead or invented links.
+The classic version remains unchanged.
+
+Edit `_data/paper_resources.json` using the article IDs from `index.html`, then
+run the generator. `role` is the author's concise personal contribution, while
+`role_source` records the evidence for maintainers and is not rendered. Never
+infer a role from author order. The banking description is supplied by the
+author; the multilayer-paper description follows the publisher's author roles.
+
+`paper_url` optionally overrides the existing title link. `code_url` optionally
+supplies a public repository, with `_data/research_code.csv` as a fallback.
+Audio remains a reminder until a real, reviewed file is supplied, for example:
+
+```json
+"audio": {
+  "src": "../audio/approved-summary.mp3",
+  "description": "AI-generated audio summary, reviewed by the author.",
+  "transcript_url": "../audio/approved-summary-transcript.html"
+}
+```
+
+The paths are relative to `/modern/`. Include the actual audio and transcript
+when filling those fields. The player uses native audio controls, no autoplay,
+and no preloading. Use the AI/review description only when it is accurate.
+For a rendered Sites copy, copy the JSON and research-code CSV into its `_data`
+directory before regenerating the pages with `--root`.
