@@ -37,28 +37,19 @@ and publication figures remain in native, keyboard-accessible disclosures.
 Research, teaching, education, experience, service, conferences, applications,
 and data-source details are retained from the shared source pages.
 
-## Completion markers
+## Unfinished materials
 
-The generator keeps a single, collapsed Materials to add checklist at the end
-of each page. On Research, it groups missing paper links, code, audio, overviews,
-and personal-role descriptions by project. It also retains the portrait reminder.
-The completed teaching-evaluation reminder has been removed. Other existing code
-reminders remain available on their relevant pages. Markers use the navy accent.
-They contain prompts, not fabricated content. Remove a corresponding reminder
-when supplying the material. Working-paper overview reminders disappear when
-an abstract/overview disclosure is added to the original paper entry. Code
-reminders disappear when `_data/research_code.csv` contains a release.
-
-The existing image is only 126 × 128 pixels; replace it with an approved image
-of at least 600 × 600 pixels before removing the portrait reminder. Keep
-unpublished research at the public level of detail approved by the owner.
+Do not show a Materials to add checklist on the public pages. Missing paper
+resources remain absent until real material is supplied. The existing image is
+only 126 × 128 pixels; a future replacement should be an approved portrait of
+at least 600 × 600 pixels. Keep unpublished research at the public level of
+detail approved by the owner.
 
 ## Resources and personal contributions
 
 Each research entry shows only its available resources, in a consistent order:
 Paper, Code, Audio summary, Abstract (or Overview), and My role. Missing resources
-are listed in the end-of-page completion checklist, rather than repeated as
-empty controls beside every paper. Entries with no ready resources have no
+have no visible controls or public checklist. Entries with no ready resources have no
 resource row. Native disclosures open inline and share a per-paper `name`, so
 supporting browsers keep one panel open at a time. There are no dead or invented
 links. The same pattern supports earlier preprints and the invited book chapter.
@@ -72,7 +63,7 @@ author; the multilayer-paper description follows the publisher's author roles.
 
 `paper_url` optionally overrides the existing title link. `code_url` optionally
 supplies a public repository, with `_data/research_code.csv` as a fallback.
-Audio remains a reminder until a real, reviewed file is supplied, for example:
+Audio is shown only when a real, reviewed file is supplied, for example:
 
 ```json
 "audio": {
@@ -92,8 +83,8 @@ directory before regenerating the pages with `--root`.
 
 `_data/earlier_preprints.json` lists earlier arXiv work separately from current
 working papers and publications. It generates a collapsed section after
-publications and before conference activity. It uses the same available-resource row; missing My role descriptions are
-retained in the completion checklist. The year is the original arXiv posting year; paper titles
+publications and before conference activity. It uses the same available-resource
+row and omits missing My role descriptions. The year is the original arXiv posting year; paper titles
 and author order follow the available paper records. The survival paper's older
 title, "Optimized Memory Reveals the Survival Strategy for a Multi-agent
 Competition", refers to the same arXiv identifier and must not be duplicated.
@@ -114,7 +105,8 @@ choice does not imply that methods or results are final. Keep their existing
 public descriptions; do not add findings. The saved classic layout is unchanged.
 
 Section headings use 18px with weight 600; entry titles use 16px with weight
-500; paper metadata and resource links use 14px; abstracts use 16px. Recognition
+500; paper metadata, resource links and abstracts use 14px. Abstracts retain
+justified text with a 1.65 line height. Recognition
 notes use 13px on desktop and 14px on smaller screens. These values respect the
 default browser setting. Research interests use 15px, with understated linked
 topics that lead to the relevant project on the same page. The 48px section gaps
@@ -147,6 +139,8 @@ investment-management course under a visible Teaching and thesis mentoring
 heading. Their original roles and dates remain unchanged; no additional page or
 foldout is created. Data Science for Quantitative Finance includes the owner's
 guest-lecture topics: copulas and programming for econometric analysis.
+The teaching-approach introduction uses the owner's wording about intuition
+and real-world examples before introducing the mathematics.
 
 ## Selected student feedback
 

@@ -98,7 +98,7 @@ summary:hover { text-decoration: underline; text-underline-offset: .18em; }
 .role-text { padding-left: .8rem; border-left: 2px solid var(--line); }
 .resource-content audio { display: block; width: min(100%, 24rem); margin-bottom: .5rem; }
 .resource-transcript { display: inline-block; margin-top: .35rem; font-size: .875rem; }
-.abstract-text { margin-block: .4rem .8rem; padding-left: 1rem; border-left: 1px solid var(--line); text-align: justify; text-align-last: start; hyphens: auto; font-size: 1rem; line-height: 1.7; }
+.abstract-text { margin-block: .4rem .8rem; padding-left: 1rem; border-left: 1px solid var(--line); text-align: justify; text-align-last: start; hyphens: auto; font-size: .875rem; line-height: 1.65; }
 .paper-figure { width: min(100%, 66ch, var(--preview-width, 36rem)); margin-block: 1rem; }
 .paper-figure--compact { --preview-width: 32rem; }
 .paper-figure--small { --preview-width: 22.4rem; }
@@ -135,15 +135,6 @@ summary:hover { text-decoration: underline; text-underline-offset: .18em; }
 .portrait-wrap > .completion { position: absolute; right: .4rem; bottom: .4rem; margin: 0; }
 .portrait-wrap > .completion > summary { padding: .3rem; background: white; border-radius: 2px; }
 .portrait-wrap > .completion p { position: absolute; z-index: 2; right: 0; width: 14rem; box-shadow: 0 2px 8px #0001; }
-.completion-checklist { margin-top: 3rem; }
-.completion-checklist > summary { display: flex; align-items: center; gap: .5rem; list-style: none; color: var(--muted); font-size: .875rem; }
-.completion-checklist > summary::-webkit-details-marker { display: none; }
-.completion-checklist .missing-square { width: .4rem; height: .4rem; }
-.completion-checklist ul { list-style: none; padding: 1rem 0 0 1rem; }
-.completion-checklist li { font-size: .875rem; line-height: 1.5; }
-.completion-checklist li + li { margin-top: .9rem; }
-.completion-checklist li > :is(a, span) { color: var(--ink); font-weight: 500; }
-.completion-checklist li p { color: var(--muted); margin-top: .2rem; }
 .site-footer { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: .4rem 1rem; margin-top: 3rem; padding-block: 1rem 2rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8125rem; }
 .site-footer small { font-size: inherit; }
 @media (max-width: 52rem) {
@@ -176,7 +167,7 @@ summary:hover { text-decoration: underline; text-underline-offset: .18em; }
 @media print {
   .site-shell { display: block; width: 100%; margin: 0; }
   .sidebar { margin-bottom: 1.5rem; }
-  .skip-link, .site-nav, .profile-links, .version-link, .portrait-wrap, .completion, .completion-checklist { display: none; }
+  .skip-link, .site-nav, .profile-links, .version-link, .portrait-wrap, .completion { display: none; }
   h1, h2, h3, h4, h5, .paper-heading { break-after: avoid; }
   .course, .paper:not(:has(details[open])), .paper-figure { break-inside: avoid; }
 }

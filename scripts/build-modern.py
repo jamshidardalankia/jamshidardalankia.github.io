@@ -151,6 +151,8 @@ def organize_teaching(teaching):
     teaching = teaching.replace(design, mentoring + '\n' + design, 1)
     teaching = teaching.replace('Guest lecture on copulas.',
                                 'Guest lecture on copulas and programming for econometric analysis.', 1)
+    teaching = teaching.replace('I start with the economic intuition, then introduce the mathematics.',
+                                'I start with the intuition using real-world examples, then introduce the mathematics.', 1)
     feedback = '''<section class="teaching-group student-feedback" aria-labelledby="teach-feedback">
 <h2 class="label" id="teach-feedback">Selected student feedback</h2>
 <p class="evaluation-result"><span class="evaluation-label">Selected teaching evaluation:</span> Overall teaching effectiveness <strong>5.25/6</strong> <span class="evaluation-meta">· 12 responses · 67% response rate</span></p>
@@ -171,7 +173,6 @@ def add_paper_resources(research, root):
     resources = json.loads(data_path.read_text()) if data_path.exists() else {}
     code_path = root / "_data/research_code.csv"
     releases = list(csv.DictReader(code_path.open())) if code_path.exists() else []
-    missing_items = []
 
     for match in list(re.finditer(r'<article class="entry paper" id="([^"]+)"', research)):
         paper_id = match[1]
@@ -190,18 +191,13 @@ def add_paper_resources(research, root):
         heading_link = re.search(r'href="([^"]+)"', heading_text)
         paper_url = entry.get("paper_url") or (unescape(heading_link[1]) if heading_link else "")
         row = []
-        missing = []
 
         if paper_url:
             row.append(resource_link(paper_url, "Paper", "paper-resource-link resource-paper", "Read " + title))
-        else:
-            missing.append("public manuscript link")
 
         code_url = entry.get("code_url") or next((r["repository"] for r in releases if r["paper_id"] == paper_id and r.get("repository")), "")
         if code_url:
             row.append(resource_link(code_url, "Code", "paper-resource-link resource-code", "Code for " + title))
-        else:
-            missing.append("code repository")
 
         audio = entry.get("audio") or {}
         if audio.get("src"):
@@ -212,8 +208,6 @@ def add_paper_resources(research, root):
             if audio.get("transcript_url"):
                 audio_body += resource_link(audio["transcript_url"], "Read transcript", "resource-transcript")
             row.append(resource_disclosure(paper_id, "audio", "Audio summary", title, audio_body))
-        else:
-            missing.append("audio summary")
 
         if 'class="paper-abstract"' in paper:
             abstract = element(paper, "details", 'class="paper-abstract"')
@@ -221,18 +215,11 @@ def add_paper_resources(research, root):
             body = re.sub(r'^\s*<summary\b[^>]*>.*?</summary>', '', inner(abstract), count=1, flags=re.S)
             row.append(resource_disclosure(paper_id, "abstract", label, title, body))
             updated = updated.replace(abstract, "")
-        else:
-            missing.append("public overview")
 
         role = entry.get("role", "")
         if role:
             role_body = f'<p class="role-text">{escape(role)}</p>'
             row.append(resource_disclosure(paper_id, "role", "My role", title, role_body))
-        else:
-            missing.append("My role description")
-        if missing:
-            missing_items.append(f'<li>{resource_link("#" + paper_id, title)}'
-                                 f'<p>To add: {escape(", ".join(missing))}.</p></li>')
 
         # The modern resource row replaces the classic code include/link.
         updated = re.sub(r'{%\s*include paper-code\.html\s+paper="[^"]+"\s*%}', '', updated)
@@ -241,7 +228,7 @@ def add_paper_resources(research, root):
                     + ''.join(row) + '</div>') if row else ""
         updated = updated.replace('</article>', row_html + '</article>')
         research = research.replace(paper, updated)
-    return research, missing_items
+    return research
 
 
 def build(root):
@@ -257,7 +244,7 @@ def build(root):
     research = organize_research(research)
     archive = earlier_preprints(root)
     research = research.replace('<section class="group meetings"', archive + '\n<section class="group meetings"', 1)
-    research, missing_paper_items = add_paper_resources(research, root)
+    research = add_paper_resources(research, root)
     research = open_conference_groups(research)
     teaching = element(home, "section", 'id="teaching"')
     teaching = re.sub(r'<h2\b[^>]*>Teaching</h2>', '', teaching, count=1)
@@ -297,12 +284,6 @@ def build(root):
             nav.append(f'<a href="{href}"{current}>{label}</a>')
         description = intro or f"{title} — Jamshid Ardalankia, PhD candidate in Economics at Virginia Tech."
         heading = f'<h1 id="{heading_id}" class="sr-only">Research</h1>' if not slug else f'<header class="page-header"><h1 id="{heading_id}">{title}</h1></header>'
-        material_items = ['<li><span>Higher-resolution portrait</span><p>Replace the current 126 × 128 pixel image with an approved portrait of at least 600 × 600 pixels.</p></li>']
-        if not slug:
-            material_items.extend(missing_paper_items)
-        completion_checklist = ('<details class="completion-checklist"><summary>'
-                                '<span class="missing-square" aria-hidden="true"></span>Materials to add</summary>'
-                                '<ul>' + ''.join(material_items) + '</ul></details>')
         page = f'''{frontmatter}<!doctype html>
 <html lang="en">
 <head>
@@ -339,7 +320,6 @@ def build(root):
         {heading}
         {content}
       </main>
-      {completion_checklist}
       <footer class="site-footer"><span>© Jamshid Ardalankia</span><a href="#top">Back to top</a></footer>
     </div>
   </div>
