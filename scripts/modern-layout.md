@@ -157,4 +157,4 @@ The numerical result comes from one evaluation, not an average across courses;
 the quotes are selected from multiple evaluations. Keep the visible wording
 "Selected teaching evaluation" and "Selected student feedback". The excerpts
 retain the students' wording. No raw reports or student identities are published.
-Use ordinary 16px text for quotes and 14px metadata, without frames or cards.
+Use italic 16px text for all seven quotes and regular 14px metadata, without frames or cards.

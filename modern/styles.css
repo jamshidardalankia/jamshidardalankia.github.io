@@ -70,7 +70,7 @@ a:hover { text-decoration: underline; }
 .evaluation-label, .evaluation-meta { color: var(--muted); }
 .evaluation-result strong { font-weight: 600; white-space: nowrap; }
 .student-quotes { margin-top: 1.25rem; }
-.student-quotes blockquote { margin: 0; font-size: 1rem; line-height: 1.6; }
+.student-quotes blockquote { margin: 0; font-size: 1rem; font-style: italic; line-height: 1.6; }
 .student-quotes blockquote + blockquote { margin-top: 1rem; }
 .chapters { margin-top: 2rem; }
 .chapters > .label { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: .8rem; }
