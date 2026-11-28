@@ -141,6 +141,12 @@ foldout is created. Data Science for Quantitative Finance includes the owner's
 guest-lecture topics: copulas and programming for econometric analysis.
 The teaching-approach introduction uses the owner's wording about intuition
 and real-world examples before introducing the mathematics.
+Middle East Economics appears under Graduate Teaching Assistantships for Fall
+2025 at Virginia Tech, before the Spring 2022 course.
+
+The About introduction uses the owner's approved wording about financial
+economics, systemic risk, crises, portfolio choice, AI, and econometrics.
+Keep engineering out of this introductory paragraph.
 
 ## Selected student feedback
 

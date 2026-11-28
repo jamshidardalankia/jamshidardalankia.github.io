@@ -153,6 +153,13 @@ def organize_teaching(teaching):
                                 'Guest lecture on copulas and programming for econometric analysis.', 1)
     teaching = teaching.replace('I start with the economic intuition, then introduce the mathematics.',
                                 'I start with the intuition using real-world examples, then introduce the mathematics.', 1)
+    assistantships = element(teaching, "section", 'aria-labelledby="teach-assistant"')
+    analysis_course = next(course for course in re.findall(r'<article class="course">.*?</article>', assistantships, re.S)
+                           if '<h3>Analysis of Economic Data</h3>' in course)
+    middle_east_course = ('<article class="course"><div class="course-heading"><h3>Middle East Economics</h3>'
+                          '<p class="term">Fall 2025</p></div>'
+                          '<p class="byline">Graduate Teaching Assistant · Virginia Tech</p></article>')
+    teaching = teaching.replace(analysis_course, middle_east_course + '\n' + analysis_course, 1)
     feedback = '''<section class="teaching-group student-feedback" aria-labelledby="teach-feedback">
 <h2 class="label" id="teach-feedback">Selected student feedback</h2>
 <p class="evaluation-result"><span class="evaluation-label">Selected teaching evaluation:</span> Overall teaching effectiveness <strong>5.25/6</strong> <span class="evaluation-meta">· 12 responses · 67% response rate</span></p>
@@ -267,13 +274,10 @@ def build(root):
         marker = '<section class="subpage-section" aria-labelledby="repositories-pending"><h2 id="repositories-pending">Project repositories</h2>' + reminder('Selected research code', 'Add the public GitHub repository URL and related paper for each code release you choose to share.', True) + '</section>'
         code_body = code_body.replace('<section class="subpage-section" aria-labelledby="research-data">', marker + '<section class="subpage-section" aria-labelledby="research-data">')
     about_intro = ('<p class="about-intro">I am a PhD candidate in Economics at Virginia Tech, '
-                   'studying systemic risk, financial crises, and portfolio choice. '
-                   'Drawing on my training in mechanical engineering and financial management, '
-                   'I combine network models with empirical and computational analysis of equity, '
-                   'banking, and cryptocurrency markets. My research asks how financial connections '
-                   'transmit shocks and when diversification can protect investors during market stress. '
+                   'studying financial economics, systemic risk, financial crises, and portfolio choice. '
                    'I am also investigating how AI and large language models may influence investor '
-                   'behavior and financial market stability.</p>')
+                   'behavior and financial market stability. I combine network models and econometrics '
+                   'with empirical and computational analysis of equity, banking, and cryptocurrency markets.</p>')
     pages = {
         "": ("Research", "research-heading", research, "Financial networks",
              "I study how financial networks shape systemic risk and portfolio diversification."),
