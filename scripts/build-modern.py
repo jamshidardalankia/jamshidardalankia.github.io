@@ -151,6 +151,17 @@ def organize_teaching(teaching):
     teaching = teaching.replace(design, mentoring + '\n' + design, 1)
     teaching = teaching.replace('Guest lecture on copulas.',
                                 'Guest lecture on copulas and programming for econometric analysis.', 1)
+    feedback = '''<section class="teaching-group student-feedback" aria-labelledby="teach-feedback">
+<h2 class="label" id="teach-feedback">Selected student feedback</h2>
+<p class="evaluation-result"><span class="evaluation-label">Selected teaching evaluation:</span> Overall teaching effectiveness <strong>5.25/6</strong> <span class="evaluation-meta">· 12 responses · 67% response rate</span></p>
+<div class="student-quotes">
+<blockquote><p>“He provided many helpful examples and interpretations. I appreciated him breaking down and walking through each line.”</p></blockquote>
+<blockquote><p>“Kind and engaging, able to bring in both theory and real world examples”</p></blockquote>
+<blockquote><p>“Nicest, most helpful, most understanding professor I've had.”</p></blockquote>
+</div>
+</section>'''
+    teaching = teaching.replace('<!-- PROFILE TEACHING END -->',
+                                feedback + '\n<!-- PROFILE TEACHING END -->', 1)
     return teaching
 
 
@@ -289,8 +300,6 @@ def build(root):
         material_items = ['<li><span>Higher-resolution portrait</span><p>Replace the current 126 × 128 pixel image with an approved portrait of at least 600 × 600 pixels.</p></li>']
         if not slug:
             material_items.extend(missing_paper_items)
-        if slug == "teaching":
-            material_items.append('<li><span>Teaching evaluation summary</span><p>Add an exact, anonymous student quote with its course and term, or a rating with its scale and number of responses.</p></li>')
         completion_checklist = ('<details class="completion-checklist"><summary>'
                                 '<span class="missing-square" aria-hidden="true"></span>Materials to add</summary>'
                                 '<ul>' + ''.join(material_items) + '</ul></details>')

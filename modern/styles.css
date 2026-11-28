@@ -66,6 +66,12 @@ a:hover { text-decoration: underline; }
 .description { font-size: .9375rem; line-height: 1.55; }
 .fact-note { font-size: .875rem; }
 .syllabi-description span { display: block; }
+.student-feedback .evaluation-result { font-size: .875rem; line-height: 1.6; }
+.evaluation-label, .evaluation-meta { color: var(--muted); }
+.evaluation-result strong { font-weight: 600; white-space: nowrap; }
+.student-quotes { margin-top: 1.25rem; }
+.student-quotes blockquote { margin: 0; font-size: 1rem; line-height: 1.6; }
+.student-quotes blockquote + blockquote { margin-top: 1rem; }
 .chapters { margin-top: 2rem; }
 .chapters > .label { color: var(--accent); font-size: 1rem; font-weight: 600; margin-bottom: .8rem; }
 summary { width: fit-content; max-width: 100%; padding-block: .12rem; color: var(--accent); font-size: .875rem; cursor: pointer; }

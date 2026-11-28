@@ -41,8 +41,8 @@ and data-source details are retained from the shared source pages.
 
 The generator keeps a single, collapsed Materials to add checklist at the end
 of each page. On Research, it groups missing paper links, code, audio, overviews,
-and personal-role descriptions by project. It also retains the portrait reminder;
-on Teaching, it includes the evaluation-evidence reminder. Other existing code
+and personal-role descriptions by project. It also retains the portrait reminder.
+The completed teaching-evaluation reminder has been removed. Other existing code
 reminders remain available on their relevant pages. Markers use the navy accent.
 They contain prompts, not fabricated content. Remove a corresponding reminder
 when supplying the material. Working-paper overview reminders disappear when
@@ -147,3 +147,14 @@ investment-management course under a visible Teaching and thesis mentoring
 heading. Their original roles and dates remain unchanged; no additional page or
 foldout is created. Data Science for Quantitative Finance includes the owner's
 guest-lecture topics: copulas and programming for econometric analysis.
+
+## Selected student feedback
+
+The modern Teaching page ends with one combined feedback section: three exact,
+anonymous student excerpts and the approved overall-teaching-effectiveness
+result, 5.25 out of 6, with 12 responses and a rounded 67% response rate.
+The numerical result comes from one evaluation, not an average across courses;
+the quotes are selected from multiple evaluations. Keep the visible wording
+"Selected teaching evaluation" and "Selected student feedback". The excerpts
+retain the students' wording. No raw reports or student identities are published.
+Use ordinary 16px text for quotes and 14px metadata, without frames or cards.
