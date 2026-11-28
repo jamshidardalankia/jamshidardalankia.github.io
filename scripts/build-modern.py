@@ -119,6 +119,9 @@ def organize_research(research):
 
 def open_conference_groups(research):
     """Show each conference and its indented paper list without disclosures."""
+    research = research.replace(
+        'Awarded full funding for the planned school, which was canceled during the pandemic.',
+        'Awarded full funding for the planned school.', 1)
     for number, match in enumerate(list(re.finditer(r'<details class="disclosure conference"[^>]*>', research)), 1):
         block = element(research, "details", match.group())
         summary = element(block, "summary", "")
