@@ -144,7 +144,7 @@ and real-world examples before introducing the mathematics.
 
 ## Selected student feedback
 
-The modern Teaching page ends with one combined feedback section: three exact,
+The modern Teaching page ends with one combined feedback section: seven exact,
 anonymous student excerpts and the approved overall-teaching-effectiveness
 result, 5.25 out of 6, with 12 responses and a rounded 67% response rate.
 The numerical result comes from one evaluation, not an average across courses;

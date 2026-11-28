@@ -160,6 +160,10 @@ def organize_teaching(teaching):
 <blockquote><p>“He provided many helpful examples and interpretations. I appreciated him breaking down and walking through each line.”</p></blockquote>
 <blockquote><p>“Kind and engaging, able to bring in both theory and real world examples”</p></blockquote>
 <blockquote><p>“Nicest, most helpful, most understanding professor I've had.”</p></blockquote>
+<blockquote><p>“He was very thorough in giving multiple examples when explaining concepts and plots.”</p></blockquote>
+<blockquote><p>“He made sure to make the class feel integrated in the classroom and the learning. It felt very personalized.”</p></blockquote>
+<blockquote><p>“Provided many examples and took time to answer questions”</p></blockquote>
+<blockquote><p>“Was always available to help me. Responded very fast to emails.”</p></blockquote>
 </div>
 </section>'''
     teaching = teaching.replace('<!-- PROFILE TEACHING END -->',
