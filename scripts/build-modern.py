@@ -266,7 +266,14 @@ def build(root):
     if not releases:
         marker = '<section class="subpage-section" aria-labelledby="repositories-pending"><h2 id="repositories-pending">Project repositories</h2>' + reminder('Selected research code', 'Add the public GitHub repository URL and related paper for each code release you choose to share.', True) + '</section>'
         code_body = code_body.replace('<section class="subpage-section" aria-labelledby="research-data">', marker + '<section class="subpage-section" aria-labelledby="research-data">')
-    about_intro = '<p class="about-intro">I study how financial networks shape systemic risk and portfolio diversification.</p>'
+    about_intro = ('<p class="about-intro">I am a PhD candidate in Economics at Virginia Tech, '
+                   'studying systemic risk, financial crises, and portfolio choice. '
+                   'Drawing on my training in mechanical engineering and financial management, '
+                   'I combine network models with empirical and computational analysis of equity, '
+                   'banking, and cryptocurrency markets. My research asks how financial connections '
+                   'transmit shocks and when diversification can protect investors during market stress. '
+                   'I am also investigating how AI and large language models may influence investor '
+                   'behavior and financial market stability.</p>')
     pages = {
         "": ("Research", "research-heading", research, "Financial networks",
              "I study how financial networks shape systemic risk and portfolio diversification."),
